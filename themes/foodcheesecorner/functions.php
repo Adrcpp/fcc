@@ -170,9 +170,15 @@ if ( class_exists( 'WooCommerce' ) ) {
  */
 
 function my_customs_scripts(){
-    wp_enqueue_script( 'script-handler', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array('jquery'), '1.4.1', true );
+    //wp_enqueue_script( 'script-handler', get_template_directory_uri() . '/js/jquery-3.3.1.min.js', array('jquery'), '1.4.1', true );
     wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '1.4.1', true );
 	wp_enqueue_script( 'bootstrap.bundle-js', get_template_directory_uri() . '/js/bootstrap.bundle.min.js', array('jquery'), '1.4.1', true );
+	wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/js/slick.min.js', array('jquery'), '1.9.0', true );
+
+	wp_register_script('filter_ajax_scripts', get_template_directory_uri() . '/js/filter_ajax_scripts.js');
+	wp_localize_script('filter_ajax_scripts', 'WPURLS', array( 'siteurl' => admin_url( 'admin-ajax.php' ) ));
+	//wp_enqueue_script( 'filter_ajax_scripts', get_template_directory_uri() . '/js/filter_ajax_scripts.js', array('jquery'), array('jquery'), null, false );
+	wp_enqueue_script( 'filter_ajax_scripts' );
 }
 add_action( 'wp_enqueue_scripts', 'my_customs_scripts' );
 
@@ -180,6 +186,8 @@ function my_front_customs_styles() {
     wp_enqueue_style( 'bootstrap-4', get_template_directory_uri() . '/css/bootstrap.min.css', false, '4', 'all' );
 	wp_enqueue_style( 'bootstrap-grid', get_template_directory_uri() . '/css/bootstrap-grid.min.css', false, '4', 'all' );
 	wp_enqueue_style( 'bootstrap-reboot', get_template_directory_uri() . '/css/bootstrap-reboot.min.css', false, '4', 'all' );
+	wp_enqueue_style( 'slick', get_template_directory_uri() . '/css/slick.css', false, '1.9.0', 'all' );
+	wp_enqueue_style( 'slick-theme', get_template_directory_uri() . '/css/slick-theme.css', false, '1.9.0', 'all' );
 }
 add_action( 'wp_enqueue_scripts', 'my_front_customs_styles' );
 //add_action( 'admin_head', 'my_front_customs_styles' );
@@ -190,13 +198,92 @@ function get_header_menu_logo()
 	$value = $wpdb->get_var( $wpdb->prepare("SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = %s LIMIT 1" , "header_logo_menu") );
 
 	if ( $image_attributes = wp_get_attachment_image_src( $value, $image_size ) ) {
-
 		// $image_attributes[0] - image URL
 		// $image_attributes[1] - image width
 		// $image_attributes[2] - image height
+		echo '<a class="logo-top" href="'. get_home_url() .'"><img src="' . $image_attributes[0] . '" class="img-fluid px-4 header-logo" /></a>';
+	}
+}
 
-		echo '<img src="' . $image_attributes[0] . '" class="img-fluid px-4 header-logo" />';
+require get_template_directory() . '/inc/widget/Woo_Slider.php';
+require get_template_directory() . '/inc/widget/Woo_Product_Filter.php';
+// Register and load the widget
+function wpb_load_widget() {
+	register_widget( 'WP_Widget_Woo_Slider' );
+	register_widget( 'WP_Widget_Product_Filter' );
+}
+add_action( 'widgets_init', 'wpb_load_widget' );
+
+
+function ajax_filter_product() {
+
+	$milk = sanitize_text_field($_POST['milk']);
+	$texture = sanitize_text_field($_POST['texture']);
+
+	$is_unique = false;
+	$all = false;
+
+	if ($texture == 24 && $milk == 21) {
+		$all = true;
 	}
 
+	if ($texture == 24) {
+		$is_unique = true;
+		$texture = null;
+	}
 
+	if ($milk == 21) {
+		$is_unique = true;
+		$milk = null;
+	}
+
+	$query = new WC_Product_Query();
+	$products = $query->get_products();
+	$resp = "";
+	$count = 0;
+
+	foreach ($products as $key => $value) {
+		$cat_ids = $value->get_category_ids();
+		if ( isSelected($all, $cat_ids, $is_unique, $milk, $texture) ) {
+
+			 $resp .= '<div class="col-sm-4 text-center">';
+			 $resp .= $value->get_image();
+			 $resp .= '<div class="text-center">';
+			 $resp .= '<h4 class="title">' .$value->get_name() .'</h4>';
+			 $resp .= '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
+			 $resp .= '</div>';
+			 $resp .= '</div>';
+			 ++$count;
+		 }
+
+	 }
+
+	header( "Content-Type: application/json" );
+	echo json_encode(["result" => $resp, "count" => $count]);
+
+	wp_die();
+}
+
+function isSelected($all, $cat_ids, $is_unique, $milk, $texture)
+{
+	if ($all == true)
+		return true;
+
+	if ($is_unique) {
+		if ($milk != null) {
+			return in_array($milk, $cat_ids);
+		} else {
+			return in_array($texture, $cat_ids);
+		}
+	}
+	return (count(array_diff([$texture, $milk], $cat_ids)) == 0 );
+}
+
+add_action('wp_ajax_filter_product', 'ajax_filter_product');
+
+
+add_action( 'woocommerce_product_options_general_product_data', 'misha_option_group' );
+
+function misha_option_group() {
+	echo '<div class="option_group">test</div>';
 }

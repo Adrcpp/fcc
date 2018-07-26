@@ -13,8 +13,6 @@
 
 		<?php
 		the_content();
-
-
 		?>
 
 	<?php if ( get_edit_post_link() ) : ?>

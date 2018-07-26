@@ -91,8 +91,6 @@ Domain Path:  /languages
 	*/
 	function ajax_upload_img() {
 
-		global $wpdb;
-
 		// Get ajax parameter - Url and id of the post attachment
 		$img_src = sanitize_text_field($_POST['url']);
 		$id_attachment = sanitize_text_field($_POST['id']);

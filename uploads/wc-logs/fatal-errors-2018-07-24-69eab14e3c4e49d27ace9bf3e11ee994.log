@@ -1,0 +1,27 @@
+2018-07-24T17:39:02+00:00 CRITICAL Uncaught Error: Call to undefined method WP_Term::get_category_ids() in D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\inc\widget\Woo_Product_Filter.php:88
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(529): WP_Widget_Product_Filter->widget(Array, Array)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(863): SiteOrigin_Panels_Renderer->the_widget(Array, Array, 0, 0, 0, true, true, 168, '')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(826): SiteOrigin_Panels_Renderer->render_widget(168, 0, 0, 0, Array, true)
+#3 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(743): SiteOrigin_Panels_Renderer->render_cell(168, 0, 0, Array, Array, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(322): SiteOrigin_Panels_Renderer->render_row(168, 0, Array, Array)
+#5 D:\Logiciel\wamp64\
+
+2018-07-24T17:48:00+00:00 CRITICAL Uncaught Error: Call to undefined function is_empty() in D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\inc\widget\Woo_Product_Filter.php:92
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(529): WP_Widget_Product_Filter->widget(Array, Array)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(863): SiteOrigin_Panels_Renderer->the_widget(Array, Array, 0, 0, 0, true, true, 168, '')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(826): SiteOrigin_Panels_Renderer->render_widget(168, 0, 0, 0, Array, true)
+#3 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(743): SiteOrigin_Panels_Renderer->render_cell(168, 0, 0, Array, Array, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(322): SiteOrigin_Panels_Renderer->render_row(168, 0, Array, Array)
+#5 D:\Logiciel\wamp64\www\wordpress\w
+
+2018-07-24T17:50:54+00:00 CRITICAL Uncaught Error: Call to undefined function dump() in D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\inc\widget\Woo_Product_Filter.php:92
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(529): WP_Widget_Product_Filter->widget(Array, Array)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(863): SiteOrigin_Panels_Renderer->the_widget(Array, Array, 0, 0, 0, true, true, 168, '')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(826): SiteOrigin_Panels_Renderer->render_widget(168, 0, 0, 0, Array, true)
+#3 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(743): SiteOrigin_Panels_Renderer->render_cell(168, 0, 0, Array, Array, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(322): SiteOrigin_Panels_Renderer->render_row(168, 0, Array, Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-co
+

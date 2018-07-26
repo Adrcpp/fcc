@@ -314,7 +314,7 @@ class SiteOrigin_Panels_Renderer {
 			'class' => implode( ' ', $layout_classes ),
 		), $post_id, $panels_data );
 
-		$this->render_element( 'div', $layout_attributes );
+		//$this->render_element( 'div', $layout_attributes );
 
 		echo apply_filters( 'siteorigin_panels_before_content', '', $panels_data, $post_id );
 
@@ -324,7 +324,7 @@ class SiteOrigin_Panels_Renderer {
 
 		echo apply_filters( 'siteorigin_panels_after_content', '', $panels_data, $post_id );
 
-		echo '</div>';
+		//echo '</div>';
 
 		do_action( 'siteorigin_panels_after_render', $panels_data, $post_id );
 
@@ -484,6 +484,7 @@ class SiteOrigin_Panels_Renderer {
 		}
 
 		// Attributes of the widget wrapper
+
 		$attributes = apply_filters( 'siteorigin_panels_widget_attributes', array(
 			'id'         => $id,
 			'class'      => implode( ' ', $classes ),
@@ -526,6 +527,7 @@ class SiteOrigin_Panels_Renderer {
 
 		} else if ( ! empty( $the_widget ) && is_a( $the_widget, 'WP_Widget' ) ) {
 			$the_widget->widget( $args, $instance );
+
 		} else {
 			// This gives themes a chance to display some sort of placeholder for missing widgets
 			echo apply_filters( 'siteorigin_panels_missing_widget', $args['before_widget'] . $args['after_widget'], $widget_class, $args, $instance );
@@ -699,7 +701,7 @@ class SiteOrigin_Panels_Renderer {
 		//$row_classes = apply_filters( 'siteorigin_panels_row_classes', $row_classes, $row );
 
 		$row_attributes = apply_filters( 'siteorigin_panels_row_attributes', array(
-			'id'    => 'pg-' . $post_id . '-' . $ri,
+			//'id'    => 'pg-' . $post_id . '-' . $ri,
 			'class' => implode( ' ', $row_classes ),
 		), $row );
 
@@ -707,8 +709,14 @@ class SiteOrigin_Panels_Renderer {
 		echo apply_filters( 'siteorigin_panels_before_row', '', $row, $row_attributes );
 
 		echo '<!-- START ROW-->';
+		$wigetname = $row['cells'][0]['widgets'][0]["panels_info"]["class"];
 
-		$this->render_element( 'div', $row_attributes );
+		//$this->render_element( 'div', $row_attributes );
+		if ($wigetname == "WP_Widget_Product_Filter")
+			echo "<div class='before-row bg-black'>";
+		else {
+			echo "<div class='before-row'>";
+		}
 
 		if ( ! empty( $row_style_wrapper ) ) {
 			echo $row_style_wrapper;
@@ -721,14 +729,20 @@ class SiteOrigin_Panels_Renderer {
 
 		// AJOUT ROW
 		echo '<!-- ROW -->';
-		if ($row['cells'][0]['widgets'][0]["panels_info"]["class"] != "SiteOrigin_Widget_Slider_Widget")
-			echo '<div class="row">';
-		else {
+
+		//echo $wigetname;
+		if ($wigetname == "SiteOrigin_Widget_Slider_Widget")
 			echo '<div class="slider-so text-center">';
+		else if ($wigetname == 'WP_Widget_Woo_Slider') {
+			echo '<div class="row slick-container">';
+		} else {
+			echo '<div class="row">';
 		}
-			foreach ( $row['cells'] as $ci => & $cell ) {
-				$this->render_cell( $post_id, $ri, $ci, $cell, $row['cells'], $panels_data );
-			}
+
+		foreach ( $row['cells'] as $ci => & $cell ) {
+			$this->render_cell( $post_id, $ri, $ci, $cell, $row['cells'], $panels_data );
+		}
+
 		echo '</div>';
 
 		// Close the style wrapper
@@ -806,7 +820,7 @@ class SiteOrigin_Panels_Renderer {
 
 
 		foreach ( $cell['widgets'] as $wi => & $widget ) {
-			//var_dump($widget["panels_info"]);
+			//var_dump($widget);
 
 			$is_last = ( $wi == count( $cell['widgets'] ) - 1 );
 			$this->render_widget( $post_id, $ri, $ci, $wi, $widget, $is_last );

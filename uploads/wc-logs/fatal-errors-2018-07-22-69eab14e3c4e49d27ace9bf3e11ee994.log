@@ -1,0 +1,94 @@
+2018-07-22T08:40:41+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140718288050067 bytes)
+
+2018-07-22T08:40:41+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140718288050067 bytes)
+
+2018-07-22T09:07:29+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 422154864149995 bytes)
+
+2018-07-22T09:07:29+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 422154864149995 bytes)
+
+2018-07-22T09:59:22+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 18804633695643 bytes)
+
+2018-07-22T11:49:54+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 14329573025649706819 bytes)
+
+2018-07-22T11:49:54+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 15194234553173790779 bytes)
+
+2018-07-22T11:50:11+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 422154864149995 bytes)
+
+2018-07-22T11:50:11+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 422154864149995 bytes)
+
+2018-07-22T11:54:06+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 703591440249923 bytes)
+
+2018-07-22T11:54:06+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 703591440249923 bytes)
+
+2018-07-22T12:05:33+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 281436576100011 bytes)
+
+2018-07-22T12:16:21+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 14612173936386423107 bytes)
+
+2018-07-22T12:16:21+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 3471516830870082995 bytes)
+
+2018-07-22T12:16:21+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 3471516830870082995 bytes)
+
+2018-07-22T12:16:21+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 3471516830870082995 bytes)
+
+2018-07-22T12:16:21+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 3471516830870082995 bytes)
+
+2018-07-22T12:28:28+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Woo_Slider' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Woo_S...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\functions.php(210): register_widget('WP_Widget_Woo_S...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wpb_load_widget('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp-includes
+
+2018-07-22T12:47:55+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Produ...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\functions.php(212): register_widget('WP_Widget_Produ...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wpb_load_widget('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp-incl
+
+2018-07-22T12:48:34+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Produ...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\functions.php(212): register_widget('WP_Widget_Produ...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wpb_load_widget('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp-incl
+
+2018-07-22T12:48:58+00:00 CRITICAL Uncaught Error: Class 'WP_Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('WP_Widget_Produ...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\functions.php(212): register_widget('WP_Widget_Produ...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wpb_load_widget('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp-incl
+
+2018-07-22T17:58:40+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 3419190270358402203 bytes)
+
+2018-07-22T17:58:40+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 6874029536211531203 bytes)
+
+2018-07-22T17:58:40+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 7309475735946949587 bytes)
+
+2018-07-22T20:17:37+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 3471516830870082995 bytes)
+
+2018-07-22T20:17:37+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 3471516830870082995 bytes)
+
+2018-07-22T20:17:37+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 3471516830870082995 bytes)
+

@@ -42,7 +42,7 @@
 			) );
 			?>
 
-			<?php   get_header_menu_logo(true);   ?>
+			<?php  get_header_menu_logo(true);  ?>
 
 
 			<?php

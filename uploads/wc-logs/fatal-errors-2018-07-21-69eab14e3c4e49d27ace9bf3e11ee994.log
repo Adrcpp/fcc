@@ -1,0 +1,68 @@
+2018-07-21T07:46:29+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140720487503763 bytes)
+
+2018-07-21T07:46:29+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140720487503763 bytes)
+
+2018-07-21T09:42:17+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 11511359607413512963 bytes)
+
+2018-07-21T09:42:17+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 11148844133890167531 bytes)
+
+2018-07-21T14:31:32+00:00 CRITICAL Uncaught Error: Call to undefined function dump() in D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\functions.php:244
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(528): wpb_widget->widget(Array, Array)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(853): SiteOrigin_Panels_Renderer->the_widget(Array, Array, 4, 0, 1, false, true, 103, '')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(816): SiteOrigin_Panels_Renderer->render_widget(103, 4, 0, 1, Array, true)
+#3 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(733): SiteOrigin_Panels_Renderer->render_cell(103, 4, 0, Array, Array, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(322): SiteOrigin_Panels_Renderer->render_row(103, 4, Array, Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\
+
+2018-07-21T15:22:53+00:00 CRITICAL Uncaught Error: Cannot use object of type WC_Product_Simple as array in D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\functions.php:246
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(528): wpb_widget->widget(Array, Array)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(853): SiteOrigin_Panels_Renderer->the_widget(Array, Array, 4, 0, 1, false, true, 103, '')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(816): SiteOrigin_Panels_Renderer->render_widget(103, 4, 0, 1, Array, true)
+#3 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(733): SiteOrigin_Panels_Renderer->render_cell(103, 4, 0, Array, Array, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\siteorigin-panels\inc\renderer.php(322): SiteOrigin_Panels_Renderer->render_row(103, 4, Array, Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins
+
+2018-07-21T17:06:33+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 16782067788450171923 bytes)
+
+2018-07-21T17:06:33+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 16782067788450171923 bytes)
+
+2018-07-21T17:21:57+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 18369829980149904347 bytes)
+
+2018-07-21T17:21:57+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 13018951879236630739 bytes)
+
+2018-07-21T17:25:20+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140722040838035 bytes)
+
+2018-07-21T17:25:20+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140722040838035 bytes)
+
+2018-07-21T17:25:37+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 1266498367541475 bytes)
+
+2018-07-21T17:42:24+00:00 CRITICAL Uncaught Error: Class 'wpb_widget' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('wpb_widget')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\functions.php(210): register_widget('wpb_widget')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wpb_load_widget('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook-
+
+2018-07-21T17:42:33+00:00 CRITICAL Uncaught Error: Class 'wpb_widget' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('wpb_widget')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\functions.php(210): register_widget('wpb_widget')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wpb_load_widget('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook-
+
+2018-07-21T17:46:39+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140722040838035 bytes)
+
+2018-07-21T17:46:39+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140722040838035 bytes)
+
