@@ -14,6 +14,7 @@ Domain Path:  /languages
 namespace FCC;
 
 use Functionality\Footer_Builder;
+use Functionality\Header_Logo;
 
 class FCC_Plugin {
 
@@ -49,6 +50,7 @@ class FCC_Plugin {
     public function init()
     {
         Footer_Builder::singleton();
+        Header_Logo::singleton();
     }
 }
 

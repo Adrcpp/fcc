@@ -42,7 +42,10 @@
 			) );
 			?>
 
-			<?php  get_header_menu_logo(true);  ?>
+			<?php
+				use Functionality\Header_Logo;
+				Header_Logo::get_header_menu_logo(true);
+			?>
 
 
 			<?php
