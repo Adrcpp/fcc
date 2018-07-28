@@ -36,7 +36,7 @@ class SiteOrigin_Panels_Home {
 	public function render_home() {
 		// We need a global post for some features in Page Builder (eg history)
 		global $post;
-
+		
 		$home_page_id = get_option( 'page_on_front' );
 		if ( empty( $home_page_id ) ) {
 			$home_page_id = get_option( 'siteorigin_panels_home_page_id' );

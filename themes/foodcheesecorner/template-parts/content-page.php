@@ -12,7 +12,7 @@
 	<?php _s_post_thumbnail(); ?>
 
 		<?php
-		the_content();
+			the_content();
 		?>
 
 	<?php if ( get_edit_post_link() ) : ?>

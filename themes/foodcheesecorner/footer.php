@@ -15,7 +15,11 @@
 
 	<footer id="colophon" class="footer container-fluid">
 
-		<?php get_footer_content(); ?>
+		<?php
+			use Functionality\Footer_Builder;
+			Footer_Builder::singleton();
+			Footer_Builder::get_footer_content();
+		?>
 
 	</footer><!-- #colophon -->
 </div><!-- #page -->
