@@ -287,3 +287,144 @@ add_action( 'woocommerce_product_options_general_product_data', 'misha_option_gr
 function misha_option_group() {
 	echo '<div class="option_group">test</div>';
 }
+
+
+/******************
+*
+*	META test
+*
+******************/
+function wpdocs_register_meta_boxes() {
+    add_meta_box( 'meta-box-id', __( 'My Meta Box', 'textdomain' ), 'wpdocs_my_display_callback', 'product', 'normal', 'high' );
+}
+add_action( 'add_meta_boxes', 'wpdocs_register_meta_boxes' );
+
+/**
+ * Meta box display callback.
+ *
+ * @param WP_Post $post Current post object.
+ */
+function wpdocs_my_display_callback( $post ) {
+    // Display code/markup goes here. Don't forget to include nonces!
+	 wp_nonce_field( 'custom_nonce_action', 'custom_nonce' );
+?>
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+	    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+	  </div>
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+	  </div>
+	  <div class="form-check">
+	    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+	    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+	  </div>
+
+<?php
+}
+
+/**
+ * Save meta box content.
+ *
+ * @param int $post_id Post ID
+ */
+function wpdocs_save_meta_box( $post_id ) {
+    // Save logic goes here. Don't forget to include nonce checks!
+}
+add_action( 'save_post', 'wpdocs_save_meta_box' );
+
+
+add_filter( 'get_user_option_meta-box-order_post', 'metabox_order' );
+function metabox_order( $order ) {
+    return array(
+        'normal' => join(
+            ",",
+            array(       // vvv  Arrange here as you desire
+                'customdiv-post',
+				'commentsdiv',
+                'editor',
+                'slugdiv',
+            )
+        ),
+    );
+}
+
+add_action( 'init', function() {
+    remove_post_type_support( 'post', 'editor' );
+    remove_post_type_support( 'page', 'editor' );
+	remove_post_type_support( 'product', 'editor' );
+}, 99);
+
+function remove_custom_field_meta_box()
+{
+    remove_meta_box("postcustom", "post", "normal");
+}
+
+/******************
+*
+*	META GALLERY
+*
+******************/
+function render( $post ) {
+	wp_nonce_field( 'gallery_meta_box', 'gallery_meta_box_nonce' );
+	//$ids = get_post_meta( $post->ID, $this->meta_key(), true );
+	if ( ! $ids ) {
+		$ids = array();
+	}
+	?>
+	<div id="truongwp-gallery-container" class="gallery">
+		<?php foreach ( $ids as $id ) : ?>
+			<div id="gallery-image-<?php echo absint( $id ); ?>" class="gallery-item">
+				<?php echo wp_get_attachment_image( $id, 'thumbnail' ); ?>
+
+				<a href="#" class="gallery-remove">&times;</a>
+
+				<input type="hidden" name="gallery_meta_box[]" value="<?php echo absint( $id ); ?>">
+			</div>
+		<?php endforeach; ?>
+	</div>
+
+	<a href="#" id="truongwp-add-gallery"><?php esc_html_e( 'Set gallery images', 'gallery-meta-box' ); ?></a>
+
+	<input type="hidden" id="truongwp-gallery-ids" value="<?php echo esc_attr( implode( ',', $ids ) ); ?>">
+	<?php
+}
+
+function add() {
+	add_meta_box(
+		'truongwp-gallery',
+		__( 'Gallery', 'gallery-meta-box' ),
+		'render',
+	 	'product', 'normal', 'high'
+	);
+}
+add_action( 'add_meta_boxes', 'add' );
+
+/**
+ * Enqueue necessary js and css.
+ */
+function enqueue() {
+
+	wp_enqueue_style( 'truongwp-gallery-meta-box', get_template_directory_uri() . '/css/gallery-meta-box.css', array(), false );
+	wp_enqueue_script( 'truongwp-gallery-meta-box', get_template_directory_uri() .'/js/gallery-meta-box.js', array( 'backbone', 'jquery' ), false, true );
+}
+
+add_action( 'admin_enqueue_scripts',  'enqueue'  );
+add_action( 'admin_footer',  'js_template' );
+
+function js_template() {
+
+	?>
+	<script type="text/html" id="tmpl-gallery-meta-box-image">
+		<div id="gallery-image-{{{ data.id }}}" class="gallery-item">
+			<img src="{{{ data.url }}}">
+
+			<a href="#" class="gallery-remove">&times;</a>
+
+			<input type="hidden" name="gallery_meta_box[]" value="{{{ data.id }}}">
+		</div>
+	</script>
+	<?php
+}

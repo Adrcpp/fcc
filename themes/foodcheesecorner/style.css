@@ -1164,3 +1164,7 @@ img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail.wp-post-image {
 div#navbarSupportedContent {
     height: 75px;
 }
+
+.custom-html-widget {
+	width: 100%;
+}
