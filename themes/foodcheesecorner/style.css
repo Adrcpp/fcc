@@ -1140,6 +1140,7 @@ img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail.wp-post-image {
 	height: 600px;
     color: white;
 }
+
 .bg-black {
 	background-color: black;
 }
@@ -1161,10 +1162,21 @@ img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail.wp-post-image {
 .logo-top {
 	 z-index: 1;
 }
+
 div#navbarSupportedContent {
     height: 75px;
 }
 
 .custom-html-widget {
 	width: 100%;
+}
+
+#cheese-count {
+	padding-top : 60px;
+	padding-bottom: 40px;
+}
+
+#select-filter{
+	position: relative;
+	top: 40%;
 }

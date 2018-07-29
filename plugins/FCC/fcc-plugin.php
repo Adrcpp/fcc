@@ -11,10 +11,13 @@ License URI:
 Text Domain:  wporg
 Domain Path:  /languages
 */
-namespace FCC;
 
 use Functionality\Footer_Builder;
 use Functionality\Header_Logo;
+
+require (dirname(__FILE__) . '/Functionality/Widget_Product_Filter.php');
+require (dirname(__FILE__) . '/Functionality/Widget_Woo_Slider.php');
+require (dirname(__FILE__) . '/Functionality/Meta_Boxes_Product.php');
 
 class FCC_Plugin {
 
@@ -23,7 +26,7 @@ class FCC_Plugin {
         spl_autoload_register(function($class){
 
             $filename = __DIR__ . '\\' . $class . '.php';
-            //var_dump($filename);
+            // var_dump($filename);
             if (!file_exists($filename)) {
                 return false; // End autoloader function and skip to the next if available.
             }
@@ -51,6 +54,11 @@ class FCC_Plugin {
     {
         Footer_Builder::singleton();
         Header_Logo::singleton();
+        add_action( 'init', function() {
+            remove_post_type_support( 'post', 'editor' );
+            remove_post_type_support( 'page', 'editor' );
+        	remove_post_type_support( 'product', 'editor' );
+        }, 99);
     }
 }
 

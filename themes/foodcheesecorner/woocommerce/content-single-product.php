@@ -30,125 +30,222 @@ if ( post_password_required() ) {
 global $product;
 
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri() ?>/woocommerce/theme.css">
 <div id="product-<?php the_ID(); ?>">
 
 	<?php
-		$post_thumbnail_id = $product->get_image_id();
-		$img_src = wp_get_attachment_image_src( $post_thumbnail_id, "full")[0]
-
+	$post_thumbnail_id = $product->get_image_id();
+	$img_src = wp_get_attachment_image_src( $post_thumbnail_id, "full")[0];
 	?>
+	<div class="bg-black">
 	<div class="warpper-hero jumbotron vertical-center">
-	<div class="hero-image">
-	  <div class="hero-text">
-	    <h1 class="hero-title"><?php echo $product->get_name(); ?></h1>
-	    <p><?php $product->get_title(); ?></p>
-	    <button>Hire me</button>
-		<div class='prev'><?php echo next_post_link('%link', '&larr; PREVIOUS', false, ' ', 'product_cat');; ?> </diV>
-		<div class='next'><?php echo previous_post_link('%link', 'NEXT &rarr;', false, ' ', 'product_cat');; ?> </div>
-	  </div>
-	</div>
-	</div>
+		<div class="hero-image">
+			<div class="hero-text">
+				<h1 class="hero-title"><?php echo $product->get_name(); ?></h1>
+				<p><?php $product->get_title(); ?></p>
+				<button>Hire me</button>
+				<div class='prev'><?php echo next_post_link('%link', '&larr; PREVIOUS', false, ' ', 'product_cat');; ?> </diV>
+					<div class='next'><?php echo previous_post_link('%link', 'NEXT &rarr;', false, ' ', 'product_cat');; ?> </div>
+				</div>
+			</div>
+		</div>
+
+		<?php
+			$args = array(
+					'delimiter' => '/',
+			);
+		?>
+		
+		<?php woocommerce_breadcrumb( $args ); ?>
+
+		</div>
+
+		<?php  $details = get_product_infos($product->get_id());  ?>
+
+
+		<!-- Nav tabs -->
+		<div class="bg-black ">
+
+		<div class="container">
+
+			<!-- Gallery + short descr -->
+			<div class="row gallery-product-info">
+
+				<div class="col-sm-4" id="product-gallery">
+				<?php
+					global $product;
+
+					$attachment_ids = $product->get_gallery_attachment_ids();
+
+					echo '<div class="container slick-container">';
+					echo '<div class="slick">';
+					foreach ($attachment_ids as $id) {
+						echo '<div>';
+						echo '<img style="max-width: 200px;margin: auto;" src="' .  wp_get_attachment_url( $id ) . '">';
+						echo '</div>';
+					}
+
+					echo '</div>';
+					echo '</div>';
+					echo '<script>
+
+					jQuery(document).ready(function( $ ) {
+
+						$(".slick").slick({
+
+
+							  speed: 300,
+							  slidesToShow: 1,
+							  slidesToScroll: 1,
+							  dots: true,
+							  responsive: [
+								  {
+									breakpoint: 1025,
+									settings: {
+									  slidesToShow: 2,
+									  slidesToScroll: 2,
+									  infinite: true,
+									  dots: true
+									}
+								  },
+								  {
+									breakpoint: 600,
+									settings: {
+									  slidesToShow: 1,
+									  slidesToScroll: 1
+									}
+								  }
+
+								]
+							});
+
+
+					});
+
+					</script>';
+
+				?>
+				</div>
+
+				<div class="col-sm-6 text-center">
+					<h1 class="title-white">Short description</h1>
+
+					<div class="">
+						<?php echo $details['shortdescr']; ?>
+					</div>
+
+				</div>
+
+			</div>
+
+
+			<!-- TAB -->
+			<ul class="nav-product-info nav nav-tabs nav-fill">
+				<li class="nav-item ">
+					<a class="nav-link active product-info-tab first-tab" data-toggle="tab" href="#description-panel">Description</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link product-info-tab " data-toggle="tab" href="#ingredients-panel">Ingredients</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link product-info-tab" data-toggle="tab" href="#nutrition-panel">Nutrition</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link product-info-tab last-tab" data-toggle="tab" href="#reviews-panel">Reviews</a>
+				</li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content product-info-tab-content">
+				<div class="tab-pane container active" id="description-panel">
+					<div class="row">
+
+						<div class="col-sm">
+
+							<div class="wrap">
+								<!-- self::image_uploader_field() -->
+								<div>
+									<?php
+
+									if (!empty($details['image-product'])) {
+										echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:95%;display:block;" />';
+									}  else {
+										echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
+									}
+									?>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm text-center" >
+							<h1 class="title-white">Description</h1>
+
+							<div class="postbox">
+								<?php $details['description']; ?>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-pane container fade" id="ingredients-panel">
+					<div class="row">
+						<div class="col-sm">
+							<?php $details['ingredients']; ?>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-pane container fade" id="nutrition-panel">
+					<div class="row">
+						<div class="col-sm">
+							<?php $details['nutrition']; ?>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab-pane container fade" id="reviews-panel">
+
+				</div>
+		  </div>
+
+
+		  <div class="cross-sell">
+		  	<h1 class="title-white"> you may also like ...</h1>
+		  	<?php
+
+		  		global $product;
+		  		$cross_sell_ids = $product->get_cross_sell_ids();
+
+		  		foreach ( $cross_sell_ids as $id ) {
+
+		  		  $_product = wc_get_product( $id );
+
+		  		  echo $_product->get_name();
+		  	  }
+		  	?>
+		  </div>
+
+
+		</div> <!-- container -->
+	</div> <!-- BG BLACK -->
+
+
 <style>
 
-.hero-title {
-	font-size: 60px;
-}
-
-.prev {
-	line-height: 0;
-	position: absolute;
-	top: 50%;
-	display: block;
-	width: 20px;
-	height: 20px;
-	padding: 0;
-	-webkit-transform: translate(0, -50%);
-	-ms-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-	cursor: pointer;
-	color: transparent;
-	border: none;
-	outline: none;
-	background: transparent;
-}
-
-.next {
-	line-height: 0;
-	position: absolute;
-	top: 50%;
-	display: block;
-	width: 20px;
-	height: 20px;
-	padding: 0;
-	-webkit-transform: translate(0, -50%);
-	-ms-transform: translate(0, -50%);
-	transform: translate(0, -50%);
-	cursor: pointer;
-	color: transparent;
-	border: none;
-	outline: none;
-	background: transparent;
-	right: 0;
-}
-.warpper-hero {
-	height: 60vh;
-	background-color: black;
-}
-
 .hero-image {
-	/* The image used */
-	background-image: url("<?php echo $img_src ?>");
+    /* The image used */
+    background-image: url("<?php echo $img_src ?>");
 
-	/* Set a specific height */
-	height: 50vh;
+    /* Set a specific height */
+    height: 50vh;
 
-	/* Position and center the image to scale nicely on all screens */
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: auto;
-	position: relative;
-		width: 100%;
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    position: relative;
+    width: 100%;
 }
 
-/* Place text in the middle of the image */
-.hero-text {
-	text-align: center;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	color: white;
-	    width: 100%;
-}
 </style>
-	<div class="summary entry-summary">
-		<?php
-			/**
-			 * Hook: woocommerce_single_product_summary.
-			 *
-			 * @hooked woocommerce_template_single_title - 5
-			 * @hooked woocommerce_template_single_rating - 10
-			 * @hooked woocommerce_template_single_price - 10
-			 * @hooked woocommerce_template_single_excerpt - 20
-			 * @hooked woocommerce_template_single_add_to_cart - 30
-			 * @hooked woocommerce_template_single_meta - 40
-			 * @hooked woocommerce_template_single_sharing - 50
-			 * @hooked WC_Structured_Data::generate_product_data() - 60
-			 */
-			do_action( 'woocommerce_single_product_summary' );
-		?>
-	</div>
-
-	<?php
-		/**
-		 * Hook: woocommerce_after_single_product_summary.
-		 *
-		 * @hooked woocommerce_output_product_data_tabs - 10
-		 * @hooked woocommerce_upsell_display - 15
-		 * @hooked woocommerce_output_related_products - 20
-		 */
-		do_action( 'woocommerce_after_single_product_summary' );
-	?>
-</div>
-
-<?php do_action( 'woocommerce_after_single_product' ); ?>

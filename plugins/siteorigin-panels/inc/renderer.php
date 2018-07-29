@@ -754,7 +754,6 @@ class SiteOrigin_Panels_Renderer {
 
 		// This allows other themes and plugins to add html after the row
 		echo apply_filters( 'siteorigin_panels_after_row', '', $row, $row_attributes );
-
 	}
 
 	/**

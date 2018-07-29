@@ -710,3 +710,218 @@ Stack trace:
 #4 {main}
   thrown
 
+2018-07-28T16:32:36+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(38): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter->register_product_filter('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NUL
+
+2018-07-28T16:38:30+00:00 CRITICAL Uncaught Error: Class name must be a valid object or a string in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register(NULL)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(25): register_widget(NULL)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\w
+
+2018-07-28T16:38:30+00:00 CRITICAL Uncaught Error: Class name must be a valid object or a string in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register(NULL)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(25): register_widget(NULL)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\w
+
+2018-07-28T16:38:35+00:00 CRITICAL Uncaught Error: Class name must be a valid object or a string in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register(NULL)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(25): register_widget(NULL)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\w
+
+2018-07-28T16:38:45+00:00 CRITICAL Uncaught Error: Class name must be a valid object or a string in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register(NULL)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget(NULL)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\w
+
+2018-07-28T16:38:55+00:00 CRITICAL Uncaught Error: Class name must be a valid object or a string in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register(NULL)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget(NULL)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\w
+
+2018-07-28T16:39:20+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NUL
+
+2018-07-28T16:39:28+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NUL
+
+2018-07-28T16:39:29+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NUL
+
+2018-07-28T16:39:29+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NUL
+
+2018-07-28T16:39:36+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NUL
+
+2018-07-28T16:43:38+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NUL
+
+2018-07-28T16:43:46+00:00 CRITICAL Uncaught Error: Class name must be a valid object or a string in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register(NULL)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget(NULL)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\w
+
+2018-07-28T16:43:59+00:00 CRITICAL Uncaught Error: Class name must be a valid object or a string in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register(NULL)
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Product_Filter.php(23): register_widget(NULL)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): Functionality\Widget_Product_Filter::Functionality\{closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\w
+
+2018-07-28T16:54:11+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\fcc-plugin.php(60): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): FCC_Plugin->myplugin_register_widgets('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp
+
+2018-07-28T16:54:12+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\fcc-plugin.php(60): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): FCC_Plugin->myplugin_register_widgets('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp
+
+2018-07-28T17:29:43+00:00 CRITICAL Uncaught Error: Class 'Widget_Product_Filter' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Product_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\fcc-plugin.php(65): register_widget('Widget_Product_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): myplugin_register_widgets('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp-includes\pl
+
+2018-07-28T17:38:06+00:00 CRITICAL Uncaught Error: Call to undefined function isSelected() in D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\fcc-plugin.php:92
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): FCC_Plugin->ajax_filter_product('')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 D:\Logiciel\wamp64\www\wordpress\wp-admin\admin-ajax.php(99): do_action('wp_ajax_filter_...')
+#4 {main}
+  thrown
+
+2018-07-28T17:38:30+00:00 CRITICAL Uncaught Error: Call to undefined function isSelected() in D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\fcc-plugin.php:92
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): FCC_Plugin->ajax_filter_product('')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#3 D:\Logiciel\wamp64\www\wordpress\wp-admin\admin-ajax.php(99): do_action('wp_ajax_filter_...')
+#4 {main}
+  thrown
+

@@ -35,4 +35,6 @@
 		.open();
 	});
 
+	$('#in-product_cat-21').attr('disabled', true).css('cursor', 'default');
+	$('#in-product_cat-24').attr('disabled', true).css('cursor', 'default');
 })( jQuery );

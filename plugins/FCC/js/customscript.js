@@ -2,7 +2,7 @@ jQuery(function($){
 	/*
 	 * Select/Upload image(s) event
 	 */
-	$('body').on('click', '.upload_image_button', function(e){
+	$('body').on('click', '.upload_image_button', function(e) {
 		e.preventDefault();
 
     		var button = $(this),

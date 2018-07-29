@@ -2,7 +2,6 @@
 
 namespace Functionality;
 
-
 class Footer_Builder {
 
     function __construct()
@@ -48,7 +47,6 @@ class Footer_Builder {
         $url = get_site_url() . "/wp-admin/post.php?post=60&action=edit";
         header("Location: $url"); /* Redirect browser */
     }
-
 
     /**
     *	Add ajax for uploading attachment and create / update a post_meta
