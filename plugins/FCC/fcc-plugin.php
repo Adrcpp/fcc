@@ -17,7 +17,11 @@ use Functionality\Header_Logo;
 
 require (dirname(__FILE__) . '/Functionality/Widget_Product_Filter.php');
 require (dirname(__FILE__) . '/Functionality/Widget_Woo_Slider.php');
+require (dirname(__FILE__) . '/Functionality/Widget_Social.php');
+require (dirname(__FILE__) . '/Functionality/Widget_Find_Store.php');
 require (dirname(__FILE__) . '/Functionality/Meta_Boxes_Product.php');
+require (dirname(__FILE__) . '/Functionality/Widget_Haut_Fromage.php');
+require (dirname(__FILE__) . '/Functionality/Widget_Hero.php');
 
 class FCC_Plugin {
 

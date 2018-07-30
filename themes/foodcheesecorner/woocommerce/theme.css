@@ -83,6 +83,7 @@ a.active {
 }
 .product-info-tab-content {
     min-height: 500px;
+    position: relative;
 }
 
 .product-info-tab.first-tab {
@@ -100,6 +101,7 @@ a.active {
 .nav-product-info {
     padding-bottom: 40px;
 }
+
 .gallery-product-info {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -107,4 +109,9 @@ a.active {
 
 .cross-sell {
     padding-top: 50px;
+}
+
+.cross-product {
+    padding-top:40px;
+    padding-bottom: 40px;
 }

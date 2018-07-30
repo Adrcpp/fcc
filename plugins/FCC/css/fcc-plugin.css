@@ -56,10 +56,12 @@ a.nav-link {
 li.image {
     width: 200px !important;
 }
+
 .true_pre_image {
     max-width: 250px;
     margin: auto;
 }
+
 .product-tab {
     padding-top: 50px;
 }

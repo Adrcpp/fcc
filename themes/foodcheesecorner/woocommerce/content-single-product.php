@@ -55,7 +55,7 @@ global $product;
 					'delimiter' => '/',
 			);
 		?>
-		
+
 		<?php woocommerce_breadcrumb( $args ); ?>
 
 		</div>
@@ -157,6 +157,7 @@ global $product;
 
 			<!-- Tab panes -->
 			<div class="tab-content product-info-tab-content">
+
 				<div class="tab-pane container active" id="description-panel">
 					<div class="row">
 
@@ -205,24 +206,42 @@ global $product;
 				</div>
 
 				<div class="tab-pane container fade" id="reviews-panel">
-
 				</div>
+
+
+					<input type='button' class='btn button-next prev' name='next' id="next" value='Next' />
+
+
+					<input type='button' class='btn button-previous next' name='previous' id="prev" value='Previous' />
+
 		  </div>
 
 
 		  <div class="cross-sell">
-		  	<h1 class="title-white"> you may also like ...</h1>
+		  	<h1 class="title-white text-center p-8"> you may also like ...</h1>
 		  	<?php
 
 		  		global $product;
 		  		$cross_sell_ids = $product->get_cross_sell_ids();
 
+				echo '<div class="container cross-product">';
+		  	  	echo '<div class="row">';
+
 		  		foreach ( $cross_sell_ids as $id ) {
 
-		  		  $_product = wc_get_product( $id );
+		  		  $product = wc_get_product( $id );
 
-		  		  echo $_product->get_name();
+				  echo '<div class="col-sm-4 text-center">';
+				  echo $product->get_image();
+				  echo '<div class="text-center">';
+				  echo '<h4 class="title">' .$product->get_name() . '</h4>';
+				  echo '<a class="show-more" href="' . $product->get_permalink() .'">Show more</a>';
+				  echo '</div>';
+				  echo '</div>';
 		  	  }
+
+			  echo '</div>';
+			  echo '</div>';
 		  	?>
 		  </div>
 
@@ -231,6 +250,23 @@ global $product;
 	</div> <!-- BG BLACK -->
 
 
+<?php	Widget_Social::render_widget(); ?>
+
+
+<script>
+jQuery(function($) {
+	$('#next').click(function() {
+		console.log("click");
+		console.log($('a.nav-link.active'));
+	 	//$('a.nav-link.active').removeClass('.active').next('a.nav-link').addClass('.active');
+		$('a.nav-link.active').next().css( "background", "yellow" )
+	});
+
+	 $('#prev').click(function(){
+	 $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+	});
+});
+</script>
 <style>
 
 .hero-image {

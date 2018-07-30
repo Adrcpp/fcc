@@ -37,7 +37,7 @@ class WP_Widget_Woo_Slider extends WP_Widget {
 		echo '<div class="container slick-container">';
 
 		echo '<div class="slick">';
-		
+
 		foreach ($products as $key => $value) {
 			echo '<div>';
 			echo $value->get_name();

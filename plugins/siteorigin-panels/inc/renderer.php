@@ -735,6 +735,10 @@ class SiteOrigin_Panels_Renderer {
 			echo '<div class="slider-so text-center">';
 		else if ($wigetname == 'WP_Widget_Woo_Slider') {
 			echo '<div class="row slick-container">';
+		} else if ($wigetname == 'Widget_Haut_Fromage') {
+			echo '<div class="row bg-black wrapper-box">';
+		} else if ($wigetname == 'Widget_Social') {
+			echo '<div class="">';
 		} else {
 			echo '<div class="row">';
 		}

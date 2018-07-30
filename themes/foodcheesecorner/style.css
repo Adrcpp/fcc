@@ -1068,6 +1068,23 @@ img.image.wp-image-104.attachment-full.size-full {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+.bg-product {
+	background-image: url('http://localhost/wordpress/wp-content/uploads/2018/07/shop-hero-img.png');
+	height: 50%;
+	position: relative;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.bg-discover {
+	background-image: url('http://localhost/wordpress/wp-content/uploads/2018/07/hero-disc.png');
+	height: 50%;
+	position: relative;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
 .caption {
 	position: absolute;
@@ -1179,4 +1196,61 @@ div#navbarSupportedContent {
 #select-filter{
 	position: relative;
 	top: 40%;
+}
+.store-input {
+	background-color: #383838;
+	padding: 8px !important;
+	margin-left: 20px;
+	color: white !important;
+}
+
+.store-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: white;
+}
+
+.store-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: white;
+}
+
+.store-input::-ms-input-placeholder { /* Microsoft Edge */
+	color: white;
+}
+
+div#products {
+    padding-bottom: 60px;
+}
+
+/**********************
+*   About / Discover
+***********************/
+
+.wrapper-box {
+padding-bottom: 80px;
+padding-top: 80px;
+}
+.haut-fromage {
+	width: 85vw;
+	height: 500px;
+	padding: 50px;
+	border: 1px solid white;
+	border-top: 0;
+	margin : auto;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+.haut-title {
+	position: relative !important;
+    bottom: -28px;
+	color: white;
+}
+
+.test {
+	text-align:center;
+	width: 85vw;
+	margin: auto !important;
+}
+
+.bottom-border {
+		border-bottom: 1px solid white;
 }

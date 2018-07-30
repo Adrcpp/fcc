@@ -62,7 +62,7 @@ class Widget_Product_Filter extends \WP_Widget {
 			$milk_options .= "<option value='". $value->term_id. "'>" . $value->name ."</option>";
 		}
 
-		echo '<div class="col-sm-12 product-filter bgimg-1">
+		echo '<div class="col-sm-12 product-filter bg-product">
 			<div id="select-filter" class="text-center p-4">
 				Show me <select id="texture">'
 				. $texture_options.

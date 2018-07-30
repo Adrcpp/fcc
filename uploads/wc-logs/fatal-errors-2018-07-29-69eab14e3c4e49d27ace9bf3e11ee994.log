@@ -25,3 +25,16 @@ Stack trace:
 
 2018-07-29T17:50:32+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 13925101663851 bytes)
 
+2018-07-29T19:09:54+00:00 CRITICAL Uncaught Error: Call to a member function get_permalink() on null in D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\woocommerce\content-single-product.php:231
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\template.php(690): require()
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\woocommerce\includes\wc-core-functions.php(179): load_template('D:\\Logiciel\\wam...', false)
+#2 D:\Logiciel\wamp64\www\wordpress\wp-content\themes\foodcheesecorner\woocommerce\single-product.php(37): wc_get_template_part('content', 'single-product')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\template-loader.php(74): include('D:\\Logiciel\\wam...')
+#4 D:\Logiciel\wamp64\www\wordpress\wp-blog-header.php(19): require_once('D:\\Logiciel\\wam...')
+#5 D:\Logiciel\wamp64\www\wordpress\index.php(17): require('D:\\Logiciel\\wam...')
+#6 {main}
+  thrown
+
+2018-07-29T19:38:29+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 25240420071467 bytes)
+
