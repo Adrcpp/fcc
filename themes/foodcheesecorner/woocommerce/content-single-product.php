@@ -36,23 +36,33 @@ global $product;
 	<?php
 	$post_thumbnail_id = $product->get_image_id();
 	$img_src = wp_get_attachment_image_src( $post_thumbnail_id, "full")[0];
+
+	global $product;
+	$terms = get_the_terms( $product->get_id(), 'product_cat' );
+
+	foreach ($terms as $key => $cat) {
+		if (strpos($cat->name, 'Haute') !== false)
+			$term = $cat;
+	}
 	?>
+		<div class="parallax-window" data-parallax="scroll"> </div>
+
 	<div class="bg-black">
 	<div class="warpper-hero jumbotron vertical-center">
-		<div class="hero-image">
+		<div class="hero-image col-sm-12 " data-parallax="scroll">
 			<div class="hero-text">
 				<h1 class="hero-title"><?php echo $product->get_name(); ?></h1>
 				<p><?php $product->get_title(); ?></p>
-				<button>Hire me</button>
-				<div class='prev'><?php echo next_post_link('%link', '&larr; PREVIOUS', false, ' ', 'product_cat');; ?> </diV>
-					<div class='next'><?php echo previous_post_link('%link', 'NEXT &rarr;', false, ' ', 'product_cat');; ?> </div>
+				<h3 class="sub-title"> <?php echo $term->name; ?></h3>
+				<div class='prev'><?php echo next_post_link('%link', '&larr;', false, ' ', 'product_cat');; ?> </diV>
+					<div class='next'><?php echo previous_post_link('%link', ' &rarr;', false, ' ', 'product_cat');; ?> </div>
 				</div>
 			</div>
 		</div>
-
 		<?php
+
 			$args = array(
-					'delimiter' => '/',
+				'delimiter' => '>',
 			);
 		?>
 
@@ -65,7 +75,7 @@ global $product;
 
 		<!-- Nav tabs -->
 		<div class="bg-black ">
-
+		<h1 class="title-white text-center"><?php echo $product->get_name(); ?></h1>	
 		<div class="container">
 
 			<!-- Gallery + short descr -->
@@ -128,7 +138,6 @@ global $product;
 				</div>
 
 				<div class="col-sm-6 text-center">
-					<h1 class="title-white">Short description</h1>
 
 					<div class="">
 						<?php echo $details['shortdescr']; ?>
@@ -145,7 +154,7 @@ global $product;
 					<a class="nav-link active product-info-tab first-tab" data-toggle="tab" href="#description-panel">Description</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link product-info-tab " data-toggle="tab" href="#ingredients-panel">Ingredients</a>
+					<a class="nav-link product-info-tab " data-toggle="tab" id="test" href="#ingredients-panel">Ingredients</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link product-info-tab" data-toggle="tab" href="#nutrition-panel">Nutrition</a>
@@ -209,10 +218,9 @@ global $product;
 				</div>
 
 
-					<input type='button' class='btn button-next prev' name='next' id="next" value='Next' />
+				<div class='prev-tab' name='next' id="prev"> < </div>
 
-
-					<input type='button' class='btn button-previous next' name='previous' id="prev" value='Previous' />
+				<div class='next-tab' name='previous' id="next"> > </div>
 
 		  </div>
 
@@ -256,15 +264,16 @@ global $product;
 <script>
 jQuery(function($) {
 	$('#next').click(function() {
-		console.log("click");
-		console.log($('a.nav-link.active'));
-	 	//$('a.nav-link.active').removeClass('.active').next('a.nav-link').addClass('.active');
-		$('a.nav-link.active').next().css( "background", "yellow" )
+		$('a.nav-link.active').parent().next('li').find('a').trigger('click');
 	});
 
 	 $('#prev').click(function(){
-	 $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+		$('a.nav-link.active').parent().prev('li').find('a').trigger('click');
 	});
+
+});
+jQuery(document).ready(function( $ ) {
+	$('.parallax-window').parallax({imageSrc: '<?php echo $img_src ?>'});
 });
 </script>
 <style>
@@ -283,5 +292,4 @@ jQuery(function($) {
     position: relative;
     width: 100%;
 }
-
 </style>

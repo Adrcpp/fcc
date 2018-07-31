@@ -25,7 +25,7 @@ class Widget_Hero extends WP_Widget {
 	public function widget( $args, $instance )
     {
 	  ?>
-		<div class="col-sm-12 product-filter bg-discover">
+		<div class="col-sm-12 product-filter parallax-window" data-parallax="scroll" >
 
 			<h1 id="select-filter" class="title-home text-center p-4">
 				discover our cheeses
@@ -33,6 +33,13 @@ class Widget_Hero extends WP_Widget {
 
 			</div>
 		</div>
+		<script>
+		jQuery(document).ready(function( $ ) {
+
+			$('.parallax-window').parallax({imageSrc: 'http://localhost/wordpress/wp-content/uploads/2018/07/hero-disc.png'});
+			$('.parallax-window').parent().parent().css('padding-bottom', 0);
+		});
+		</script>
 	 <?php
 	}
 
@@ -65,4 +72,9 @@ class Widget_Hero extends WP_Widget {
 add_action( 'widgets_init',  function () {
         register_widget( 'Widget_Hero' );
     }
+);
+
+add_action( 'wp_enqueue_scripts', function () {
+		wp_enqueue_script( 'custom-script',  plugins_url() .  '/FCC/js/parrallax.js', array( 'jquery' ) );
+	}
 );

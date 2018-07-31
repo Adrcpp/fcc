@@ -115,3 +115,18 @@ a.active {
     padding-top:40px;
     padding-bottom: 40px;
 }
+div.prev-tab, div.next-tab {
+    color: white;
+    font-size: 28px;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+}
+
+div.next-tab {
+        right: 0;
+}
+.sub-title {
+    font-style: italic;
+    font-family: LibreBaskerVille;
+}

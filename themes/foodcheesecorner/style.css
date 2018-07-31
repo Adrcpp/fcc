@@ -475,6 +475,17 @@ big {
 	src: url('fonts/LibreBaskerVille-Regular.ttf');
 }
 
+@font-face {
+	font-family: LibreBaskerVille;
+	font-style: italic;
+	src: url('fonts/LibreBaskerVille-Italic.ttf');
+}
+
+@font-face {
+	font-family: BrandyBF;
+	src: url('fonts/BrandyBF.ttf');
+}
+
 a.nav-link{
 	font-family: GothamBold;
 	text-transform: uppercase;
@@ -1077,15 +1088,6 @@ img.image.wp-image-104.attachment-full.size-full {
 	background-size: cover;
 }
 
-.bg-discover {
-	background-image: url('http://localhost/wordpress/wp-content/uploads/2018/07/hero-disc.png');
-	height: 50%;
-	position: relative;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
 .caption {
 	position: absolute;
 	left: 0;
@@ -1160,20 +1162,8 @@ img.attachment-woocommerce_thumbnail.size-woocommerce_thumbnail.wp-post-image {
 
 .bg-black {
 	background-color: black;
-}
-
-.show-more {
-    display: block;
-    width: 115px;
-    /*height: 30px;*/
-    background: white;
-    /*padding: 10px;*/
-    text-align: center;
-    border-radius: 5px;
-    color: black;
-    font-weight: bold;
-	margin: auto;
-	text-decoration: none !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
 }
 
 .logo-top {
@@ -1205,15 +1195,15 @@ div#navbarSupportedContent {
 }
 
 .store-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-	color: white;
+	color: #c7c7c7;
 }
 
 .store-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-	color: white;
+	color: #c7c7c7;
 }
 
 .store-input::-ms-input-placeholder { /* Microsoft Edge */
-	color: white;
+	color: #c7c7c7;
 }
 
 div#products {
@@ -1223,16 +1213,25 @@ div#products {
 /**********************
 *   About / Discover
 ***********************/
+.bg-discover {
+	background-image: url('http://localhost/wordpress/wp-content/uploads/2018/07/hero-disc.png');
+	height: 50%;
+	position: relative;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
 .wrapper-box {
-padding-bottom: 80px;
-padding-top: 80px;
+	padding-bottom: 80px;
+	padding-top: 80px;
 }
+
 .haut-fromage {
 	width: 85vw;
-	height: 500px;
+	/* height: 500px; */
 	padding: 50px;
-	border: 1px solid white;
+	border: 1px solid #a58946;
 	border-top: 0;
 	margin : auto;
 	padding-top: 80px;
@@ -1252,5 +1251,97 @@ padding-top: 80px;
 }
 
 .bottom-border {
-		border-bottom: 1px solid white;
+	border-bottom: 1px solid #a58946;
+}
+
+.text-discover {
+	max-width: 604px;
+	color: #c7c7c7;
+}
+
+.go-shop {
+	display:inline-block;
+	color:#c7c7c7;
+	border:1px solid #CCC;
+	background:#000;
+	box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+	cursor:pointer;
+	vertical-align:middle;
+	max-width: 200px;
+	width: 200px;
+	padding: 5px;
+	text-align: center;
+}
+
+.go-shop:hover {
+	color:#000;
+	background:white;
+}
+.gallery-haut-fromage {
+	/*max-width: 400px;*/
+	margin:auto;
+}
+
+
+@media only screen and (max-width: 644px) {
+	.bottom-border {
+		display: none;
+	}
+}
+
+
+/*
+* Product / SHOP
+*/
+
+div#select-filter {
+	font-family: BrandyBF;
+	font-size: 45px;;
+}
+
+select#texture, select#milk {
+    background-color: #ffffff87;
+}
+
+.show-more {
+	text-transform: uppercase;
+    display: block;
+    width: 130px;
+    background: white;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+	margin: auto;
+	text-decoration: none !important;
+	padding: 2px;
+}
+
+.col-sm-12.product-filter.parallax-window {
+    background-color: #00000075;
+}
+
+#cheese-count {
+	display: none;
+	background-color: white;
+}
+
+.result-filter {
+	text-align: center;
+    font-size: 35px;
+    text-transform: uppercase;
+	margin: 0;
+}
+
+.border-result {
+	border: 2px solid black;
+	max-width: 800px;
+	margin: auto;
+}
+
+.header-col {
+    z-index: 1;
+}
+
+.sub-title {
+
 }

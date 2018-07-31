@@ -62,7 +62,7 @@ class Widget_Product_Filter extends \WP_Widget {
 			$milk_options .= "<option value='". $value->term_id. "'>" . $value->name ."</option>";
 		}
 
-		echo '<div class="col-sm-12 product-filter bg-product">
+		echo '<div class="col-sm-12 product-filter parallax-window">
 			<div id="select-filter" class="text-center p-4">
 				Show me <select id="texture">'
 				. $texture_options.
@@ -101,6 +101,16 @@ class Widget_Product_Filter extends \WP_Widget {
 		}
 
 		echo '</div></div></div>';
+        ?>
+        <script>
+            jQuery(document).ready(function( $ ) {
+
+                $('.parallax-window').parallax({imageSrc: 'http://localhost/wordpress/wp-content/uploads/2018/07/shop-hero-img.png'});
+                $('.parallax-window').parent().parent().css('padding-bottom', 0);
+                
+            });
+        </script>
+        <?php
 	}
 
 	// Widget Backend

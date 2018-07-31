@@ -714,6 +714,8 @@ class SiteOrigin_Panels_Renderer {
 		//$this->render_element( 'div', $row_attributes );
 		if ($wigetname == "WP_Widget_Product_Filter")
 			echo "<div class='before-row bg-black'>";
+		else if ($wigetname == 'Widget_Haut_Fromage' || $wigetname == 'Widget_Fromagerie_Gourmet')
+			echo "<div class='discover-row'>";
 		else {
 			echo "<div class='before-row'>";
 		}
@@ -735,7 +737,7 @@ class SiteOrigin_Panels_Renderer {
 			echo '<div class="slider-so text-center">';
 		else if ($wigetname == 'WP_Widget_Woo_Slider') {
 			echo '<div class="row slick-container">';
-		} else if ($wigetname == 'Widget_Haut_Fromage') {
+		} else if ($wigetname == 'Widget_Haut_Fromage' || $wigetname == 'Widget_Fromagerie_Gourmet') {
 			echo '<div class="row bg-black wrapper-box">';
 		} else if ($wigetname == 'Widget_Social') {
 			echo '<div class="">';

@@ -22,6 +22,7 @@ require (dirname(__FILE__) . '/Functionality/Widget_Find_Store.php');
 require (dirname(__FILE__) . '/Functionality/Meta_Boxes_Product.php');
 require (dirname(__FILE__) . '/Functionality/Widget_Haut_Fromage.php');
 require (dirname(__FILE__) . '/Functionality/Widget_Hero.php');
+require (dirname(__FILE__) . '/Functionality/Widget_Fromagerie_Gourmet.php');
 
 class FCC_Plugin {
 

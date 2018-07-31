@@ -198,3 +198,56 @@ function remove_custom_field_meta_box()
 {
     remove_meta_box("postcustom", "post", "normal");
 }
+
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Your Site Name and Info';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+function my_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(<?php echo get_site_url()  . '/wp-content/uploads/2018/07/header-logo-1.png'; ?> );
+			width: 100%;
+		    background-size: contain;
+		    background-repeat: no-repeat;
+		    padding-bottom: 30px;
+        }
+		body.login.login-action-login.wp-core-ui.locale-en-us {
+		    background-color: black !important;
+		}
+
+		label {
+		    font-size: larger !important;
+			color:white;
+			color: #ffffff !important;
+		}
+		a {
+		    color: white !important;
+		}
+		form#loginform {
+		    background-color: black;
+		    border-color: white;
+		    border-style: solid;
+		}
+
+		input#wp-submit {
+		    background-color: black;
+		    text-shadow: unset;
+		    color: white;
+		    border-color: white;
+		    width: 113px;
+		}
+
+		input#wp-submit:hover {
+			background-color: white;
+			color: black;
+		}
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );

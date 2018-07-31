@@ -33,7 +33,17 @@ jQuery(document).ready(function( $ ) {
         }).done(function( msg ) {
             console.log("Data Saved: " + msg );
             $('#products').empty();
+            $('#cheese-count').empty();
             $('#products').append(msg.result);
+
+            if (msg.count > 1) {
+                $count = msg.count +" cheeses for you.";
+            } else {
+                $count = msg.count + " cheese for you.";
+            }
+
+            $('#cheese-count').append("<div class='border-result'><p class='result-filter'> We have " + $count +" </p> </div>");
+            $('#cheese-count').show();
         })
 
       event.preventDefault();

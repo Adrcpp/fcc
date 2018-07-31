@@ -16,7 +16,6 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
 	<?php wp_head(); ?>
 </head>
 
@@ -32,31 +31,36 @@
 
 
 		<div class="collapse navbar-collapse justify-content-md-center text-center" id="navbarSupportedContent">
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-left',
-				'menu_class'	 => 'navbar-nav px-2',
-				'menu_id'        => 'menu-left',
-				'container'		 => '',
-				'container_class'=> 'nav-item',
-			) );
-			?>
 
-			<?php
+			<div class="col row">
+				<ul class="col-8"></ul>
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'menu-left',
+					'menu_class'	 => 'navbar-nav px-2  col',
+					'menu_id'        => 'menu-left',
+					'container'		 => '',
+					'container_class'=> 'nav-item',
+				) );
+				?>
+			</div>
+			<div class="col header-col">
+				<?php
 				use Functionality\Header_Logo;
 				Header_Logo::get_header_menu_logo(true);
-			?>
-
-
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-right',
-				'menu_class'	 => 'navbar-nav px-2',
-				'menu_id'        => 'menu-right',
-				'container'		 => '',
-				'container_class'=> 'nav-item',
-			) );
-			?>
+				?>
+			</div>
+			<div class="col">
+				<?php
+				wp_nav_menu( array(
+					'theme_location' => 'menu-right',
+					'menu_class'	 => 'navbar-nav px-2',
+					'menu_id'        => 'menu-right',
+					'container'		 => '',
+					'container_class'=> 'nav-item',
+				) );
+				?>
+			</div>
 		</div>
 	</nav><!-- #site-navigation -->
 </div>

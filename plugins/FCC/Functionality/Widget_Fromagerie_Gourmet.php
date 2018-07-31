@@ -1,18 +1,18 @@
 <?php
 // Creating the widget
-class Widget_Haut_Fromage extends WP_Widget {
+class Widget_Fromagerie_Gourmet extends WP_Widget {
 
 	function __construct() {
 		parent::__construct(
 
 			// Base ID of your widget
-			'Widget_Haut_Fromage',
+			'Widget_Fromagerie_Gourmet',
 
 			// Widget name will appear in UI
-			__('Widget Haut Fromage', 'wpb_widget_domain'),
+			__('Widget Fromagerie Gourmet', 'wpb_widget_domain'),
 
 			// Widget description
-			array( 'description' => __( 'Haut Fromage', 'wpb_widget_domain' ), )
+			array( 'description' => __( 'Fromagerie Gourmet', 'wpb_widget_domain' ), )
 		);
 	}
 
@@ -80,33 +80,45 @@ class Widget_Haut_Fromage extends WP_Widget {
 	  </div>
 	  <div class="haut-fromage">
 		  <div class="row align-items-center">
+             <div class="col-md-1"></div>
+              <div class="col-md-7 col-sm-12">
+                  <p class="text-discover">
+                      <?php echo $content; ?>
+                  </p>
+                  <a href="<?php echo get_permalink($page); ?>"> <div class="go-shop"> Shop </div></a>
+              </div>
 			  <div class="col-md-4 col-sm-12">
 				  <?php  echo $display_gallery; ?>
 			  </div>
-			  <div class="col-md-2"></div>
-			  <div class="col-md-6 col-sm-12">
-				  <p class="text-discover">
-					  <?php echo $content; ?>
-				  </p>
-				  <a href="<?php echo get_permalink($page); ?>"> <div class="go-shop"> Shop </div></a>
-			  </div>
+
 			  <?php self::print_haut_fromage(); ?>
+
+            <div class="col-md-6 col-sm-12 text-center">
+                <img src="http://localhost/wordpress/wp-content/uploads/2018/07/roland.png" />
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <p class="text-discover">
+                    <?php echo $content; ?>
+                </p>
+            </div>
 		  </div>
+
+
 	  </div>
 	  <?php
 
   }
 	public function print_haut_fromage()
 	{
-		$args = array('product_cat' => 'haute-fromagerie');
+		$args = array('product_cat' => 'haute-fromagerie-gourmet');
 		$products = wc_get_products( $args );
-		echo '<div class="row">';
+		echo '<div class="container-fluid row">';
 		foreach ($products as $key => $value) {
 			echo '<div class="col text-center">';
 			echo $value->get_image();
 			echo '<div class="text-center">';
 			echo '<h4 class="title">' .$value->get_name() .'</h4>';
-			//echo '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
+			echo '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
 			echo '</div>';
 			echo '</div>';
 		}
@@ -290,6 +302,6 @@ class Widget_Haut_Fromage extends WP_Widget {
 }
 
 add_action( 'widgets_init',  function () {
-        register_widget( 'Widget_Haut_Fromage' );
+        register_widget( 'Widget_Fromagerie_Gourmet' );
     }
 );
