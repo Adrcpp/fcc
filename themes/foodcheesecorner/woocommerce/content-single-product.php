@@ -81,6 +81,7 @@ global $product;
 		<!-- Nav tabs -->
 		<div class="bg-black ">
 		<h1 class="title-white text-center"><?php echo $product->get_name(); ?></h1>
+		<h5 class="sub-title text-center"> <?php echo $details['subtitle']; ?></h5>
 		<div class="container">
 
 			<!-- Gallery + short descr -->
@@ -144,7 +145,7 @@ global $product;
 
 				<div class="col-sm-6 text-center">
 
-					<div class="">
+					<div class="short-descr-warpper">
 						<?php echo $details['shortdescr']; ?>
 					</div>
 
@@ -178,7 +179,7 @@ global $product;
 						<div class="col-sm">
 
 							<div class="wrap">
-								<!-- self::image_uploader_field() -->
+
 								<div>
 									<?php
 
@@ -193,20 +194,25 @@ global $product;
 							</div>
 						</div>
 
-						<div class="col-sm text-center" >
-							<h1 class="title-white">Description</h1>
-
-							<div class="postbox">
-								<?php $details['description']; ?>
+						<div class="col-sm text-center align-center" >
+							<div>
+								<h1 class="title-tab">Description</h1>
+								<div class="description-tab">
+									<?php echo $details['description']; ?>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> <!-- END Description panel-->
 
 				<div class="tab-pane container fade" id="ingredients-panel">
 					<div class="row">
 						<div class="col-sm">
-							<?php $details['ingredients']; ?>
+						</div>
+						<div class="col-sm description-tab">
+							<?php echo $details['ingredients']; ?>
+						</div>
+						<div class="col-sm">
 						</div>
 					</div>
 				</div>
@@ -214,7 +220,11 @@ global $product;
 				<div class="tab-pane container fade" id="nutrition-panel">
 					<div class="row">
 						<div class="col-sm">
-							<?php $details['nutrition']; ?>
+						</div>
+						<div class="col-sm description-tab">
+							<?php echo $details['nutrition']; ?>
+						</div>
+						<div class="col-sm">
 						</div>
 					</div>
 				</div>

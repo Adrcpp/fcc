@@ -40,3 +40,7 @@ Stack trace:
 
 2018-08-01T17:08:12+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140718071781267 bytes)
 
+2018-08-01T17:34:48+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140718071781259 bytes)
+
+2018-08-01T18:37:59+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 8097862952262005443 bytes)
+

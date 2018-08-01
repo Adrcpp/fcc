@@ -814,6 +814,7 @@ a:hover, a:active {
 	padding-bottom: 35px;
 }
 
+
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -1511,6 +1512,7 @@ label.label-contact {
 	div#navbarSupportedContent {
 	    height: initial;
 	}
+
 }
 
 .parallax-window {
@@ -1539,7 +1541,7 @@ label.label-contact {
     border: none;
     outline: none;
     background: transparent;
-    right: 35px;
+	right: 80px;
     font-size: 57px;
 	color: white;
 }
@@ -1567,3 +1569,13 @@ label.label-contact {
 	font-size: 16px !important;
 	color: white !important;
 }
+
+.hero-title {
+	font-size: 4rem;
+}
+
+a.nav-link {
+    outline: 0;
+}
+
+img, a {border:none!important; outline: none!important;}

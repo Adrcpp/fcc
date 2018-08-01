@@ -21,7 +21,7 @@ class Widget_Contact_Page extends WP_Widget {
 		<div class="bg-black container-fluid contact-page">
 			<div class="container">
 				<div class="col text-center container" >
-					<h1 class="title-home title-white">contact</h1>
+					<h1 class="title-home title-white hero-title">contact</h1>
 					<h4 class="sub-title">Follow us on Social Media</h4>
 					<div class="">
 						<div class="text-center social-header row">
@@ -63,7 +63,7 @@ class Widget_Contact_Page extends WP_Widget {
 			<div class="pt-4"></div>
 			<hr/>
 			<div class="pt-4"></div>
-			
+
 			<div class="container pt-4">
 
 				<form>
