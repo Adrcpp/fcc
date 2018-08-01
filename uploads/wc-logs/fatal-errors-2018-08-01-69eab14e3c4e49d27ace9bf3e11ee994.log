@@ -1,0 +1,42 @@
+2018-08-01T13:10:49+00:00 CRITICAL Uncaught Error: Class 'Widget_Contact_Page ' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Contact_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Contact_Page.php(54): register_widget('Widget_Contact_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): {closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp-inc
+
+2018-08-01T13:11:11+00:00 CRITICAL Uncaught Error: Class 'Widget_Contact_Page ' not found in D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-widget-factory.php:100
+Stack trace:
+#0 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(115): WP_Widget_Factory->register('Widget_Contact_...')
+#1 D:\Logiciel\wamp64\www\wordpress\wp-content\plugins\FCC\Functionality\Widget_Contact_Page.php(54): register_widget('Widget_Contact_...')
+#2 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): {closure}('')
+#3 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 D:\Logiciel\wamp64\www\wordpress\wp-includes\plugin.php(453): WP_Hook->do_action(Array)
+#5 D:\Logiciel\wamp64\www\wordpress\wp-includes\widgets.php(1649): do_action('widgets_init')
+#6 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(286): wp_widgets_init('')
+#7 D:\Logiciel\wamp64\www\wordpress\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 D:\Logiciel\wamp64\www\wordpress\wp-inc
+
+2018-08-01T14:24:49+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 8028075806769308099 bytes)
+
+2018-08-01T14:32:02+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 8097862952262005451 bytes)
+
+2018-08-01T14:32:02+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 7526466485991535819 bytes)
+
+2018-08-01T14:50:27+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 8028075806769308107 bytes)
+
+2018-08-01T16:23:28+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140718071781259 bytes)
+
+2018-08-01T16:23:28+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140718071781259 bytes)
+
+2018-08-01T16:50:23+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140718071781267 bytes)
+
+2018-08-01T16:50:23+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140718071781267 bytes)
+
+2018-08-01T17:08:12+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 140718071781267 bytes)
+

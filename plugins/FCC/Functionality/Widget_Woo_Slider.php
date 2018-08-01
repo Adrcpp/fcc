@@ -33,16 +33,20 @@ class WP_Widget_Woo_Slider extends WP_Widget {
 		$args = array();
 		$products = wc_get_products( $args );
 		// var_dump($products[0]);
-		echo '<h1 class="title-cheese text-center col-12">Our cheese</h1>';
+		echo '<h1 class="title-cheese text-center col-12">Our cheeses</h1>';
 		echo '<div class="container slick-container">';
 
 		echo '<div class="slick">';
 
 		foreach ($products as $key => $value) {
-			echo '<div>';
-			echo $value->get_name();
+			echo '<div class=" text-center">';
 			echo $value->get_image();
+			echo '<div class="text-center">';
+			echo '<h4 class="title">' .$value->get_name() .'</h4>';
+			echo '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
 			echo '</div>';
+			echo '</div>';
+
 		}
 
 		echo '</div>';

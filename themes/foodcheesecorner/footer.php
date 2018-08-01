@@ -14,13 +14,13 @@
 	   </div><!-- #content -->
 
 	<footer id="colophon" class="footer container-fluid">
-
-		<?php
-			use Functionality\Footer_Builder;
-			Footer_Builder::singleton();
-			Footer_Builder::get_footer_content();
-		?>
-
+		<diV class="container">
+			<?php
+				use Functionality\Footer_Builder;
+				Footer_Builder::singleton();
+				Footer_Builder::get_footer_content();
+			?>
+		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

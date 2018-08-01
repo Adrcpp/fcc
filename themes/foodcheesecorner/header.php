@@ -33,7 +33,7 @@
 		<div class="collapse navbar-collapse justify-content-md-center text-center" id="navbarSupportedContent">
 
 			<div class="col row">
-				<ul class="col-8"></ul>
+				<ul class="col-md-8 col-xs-0"></ul>
 				<?php
 				wp_nav_menu( array(
 					'theme_location' => 'menu-left',

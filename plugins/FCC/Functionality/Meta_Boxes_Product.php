@@ -22,6 +22,10 @@ function render( $post ) {
 	?>
 
 	<div class="row">
+		<div class="col-sm-12">
+			<h1> Subtitle </h1>
+			<input id="subtitle" name="subtitle" type="text" value="<?php echo $details["subtitle"];?>"/>
+		</div>
 
 		<div class="col-sm" id="product-gallery">
 			<h1>Set the gallery</h1>
@@ -177,6 +181,9 @@ function fcc_save_metabox( $post_id, $post ) {
 	// // Save our submissions to the database
 	$sanitized = fcc_product_info_defaults();
 
+	if ( isset ( $_POST['subtitle'] ) )
+		$sanitized['subtitle'] = wp_filter_post_kses($_POST['subtitle']);
+
 	if ( isset ( $_POST['image-product'] ) )
 		$sanitized['image-product'] = wp_filter_post_kses($_POST['image-product']);
 
@@ -199,6 +206,7 @@ add_action( 'save_post', 'fcc_save_metabox', 1, 2 );
 function fcc_product_info_defaults()
 {
 	return array(
+		'subtitle'		=> '',
 		'shortdescr'  	=> '',
 		'image-product' => '',
 		'description' 	=> '',

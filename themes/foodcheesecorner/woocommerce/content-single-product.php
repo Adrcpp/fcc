@@ -44,21 +44,26 @@ global $product;
 		if (strpos($cat->name, 'Haute') !== false)
 			$term = $cat;
 	}
-	?>
-		<div class="parallax-window" data-parallax="scroll"> </div>
 
-	<div class="bg-black">
-	<div class="warpper-hero jumbotron vertical-center">
-		<div class="hero-image col-sm-12 " data-parallax="scroll">
+	 // $nex_post get_next_post('%link', '<', false, ' ', 'product_cat');
+	 $nex_post =  get_previous_post(false, '', 'product_cat');
+	 $prev_post = get_next_post(false, '', 'product_cat');
+
+	//var_dump($nex_post, $prev_post);
+	?>
+
+	<div class="bg-black ">
+	<div class="warpper-hero jumbotron vertical-center ">
+		<div class=" hero-image col-sm-12 parallax-window">
 			<div class="hero-text">
 				<h1 class="hero-title"><?php echo $product->get_name(); ?></h1>
-				<p><?php $product->get_title(); ?></p>
+				<p> <?php $product->get_title(); ?></p>
 				<h3 class="sub-title"> <?php echo $term->name; ?></h3>
-				<div class='prev'><?php echo next_post_link('%link', '&larr;', false, ' ', 'product_cat');; ?> </diV>
-					<div class='next'><?php echo previous_post_link('%link', ' &rarr;', false, ' ', 'product_cat');; ?> </div>
-				</div>
 			</div>
 		</div>
+		<div class='next-fromage'> <a class="sub-title next-fromage-link" href="<?php echo $nex_post->guid; ?>" > <?php echo  $nex_post->post_title; ?>  > </a> </diV>
+		<div class='prev-fromage'> <a class="sub-title next-fromage-link" href="<?php echo $prev_post->guid; ?>" > < <?php echo $prev_post->post_title; ?></a> </diV>
+	</div>
 		<?php
 
 			$args = array(
@@ -75,7 +80,7 @@ global $product;
 
 		<!-- Nav tabs -->
 		<div class="bg-black ">
-		<h1 class="title-white text-center"><?php echo $product->get_name(); ?></h1>	
+		<h1 class="title-white text-center"><?php echo $product->get_name(); ?></h1>
 		<div class="container">
 
 			<!-- Gallery + short descr -->
@@ -219,7 +224,6 @@ global $product;
 
 
 				<div class='prev-tab' name='next' id="prev"> < </div>
-
 				<div class='next-tab' name='previous' id="next"> > </div>
 
 		  </div>
@@ -256,7 +260,7 @@ global $product;
 
 		</div> <!-- container -->
 	</div> <!-- BG BLACK -->
-
+</div>
 
 <?php	Widget_Social::render_widget(); ?>
 
@@ -273,23 +277,25 @@ jQuery(function($) {
 
 });
 jQuery(document).ready(function( $ ) {
-	$('.parallax-window').parallax({imageSrc: '<?php echo $img_src ?>'});
+	$('.parallax-window').parallax({imageSrc: '<?php echo $img_src ?>', zIndex: 12 });
 });
 </script>
+
 <style>
 
 .hero-image {
     /* The image used */
-    background-image: url("<?php echo $img_src ?>");
+    /*background-image: url("<?php echo $img_src ?>");*/
 
     /* Set a specific height */
     height: 50vh;
-
+	z-index: 12;
     /* Position and center the image to scale nicely on all screens */
-    background-position: center;
+    /* background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
-    position: relative;
-    width: 100%;
+    position: relative; */
+    max-width: 400px;
+	margin:auto;
 }
 </style>

@@ -25,7 +25,7 @@ class Widget_Find_Store extends WP_Widget {
 	public function widget( $args, $instance )
     {
         ?>
-		<div class="container-fluid">
+		<div class="container-fluid pt-5">
 			<div class="before-row"><!-- ROW -->
 				<div class="row"><!-- START CELL-->
 					<div class="textwidget">

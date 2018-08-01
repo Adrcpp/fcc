@@ -25,7 +25,7 @@ class Widget_Social extends WP_Widget {
 	public function widget( $args, $instance )
     {
         $content ='
-        <div class="before-row"><!-- ROW -->
+        <div class="before-row pt-5"><!-- ROW -->
             <div class="row"><!-- START CELL-->
                 <div class="textwidget">
                     <h1 class="title-home">Recipes &amp; pairings</h1>

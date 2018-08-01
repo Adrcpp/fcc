@@ -76,7 +76,7 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
 		</script>';
 	  ?>
 	  <div class="row test">
-		  <div class="col-3 bottom-border"></div> <h1 class=" col title-home haut-title"> Haute Fromagerie </h1> <div class="col-3 bottom-border"></div>
+		  <div class="col-3 bottom-border"></div> <h1 class=" col title-home haut-title"> Haute Fromagerie Gourmet</h1> <div class="col-3 bottom-border"></div>
 	  </div>
 	  <div class="haut-fromage">
 		  <div class="row align-items-center">

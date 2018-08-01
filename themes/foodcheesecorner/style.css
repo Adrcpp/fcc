@@ -43,6 +43,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	## Captions
 	## Galleries
 # Extra
+# About Page
+# Shap Page
+# Contact Page
+# 404 Page
+# Responsive
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Normalize
@@ -789,12 +794,24 @@ a:hover, a:active {
 	font-family: GothamBold;
 	color: white;
 	text-transform: uppercase;
-	text-align: center;
+	/*text-align: center;*/
 	font-size: small;
+	letter-spacing: 2px;
 }
 
 .social {
     line-height: normal;
+}
+
+.footer-p {
+	font-size: small;
+	margin:0;
+	/*max-height: 15px;*/
+	line-height: 1.8;
+	color: white;
+}
+.footer-section {
+	padding-bottom: 35px;
 }
 
 /*--------------------------------------------------------------
@@ -1079,6 +1096,7 @@ img.image.wp-image-104.attachment-full.size-full {
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+
 .bg-product {
 	background-image: url('http://localhost/wordpress/wp-content/uploads/2018/07/shop-hero-img.png');
 	height: 50%;
@@ -1096,7 +1114,7 @@ img.image.wp-image-104.attachment-full.size-full {
 }
 
 div#idtest {
-	height:80vh;
+	/*height:80vh;*/
 }
 
 .social-header {
@@ -1111,6 +1129,7 @@ div#idtest {
 .title-social {
     color: white;
 	text-transform: uppercase;
+	padding-top: 15px;
 }
 .subtitle-social {
     color: white;
@@ -1210,9 +1229,9 @@ div#products {
     padding-bottom: 60px;
 }
 
-/**********************
-*   About / Discover
-***********************/
+/*--------------------------------------------------------------
+# 	About Page
+--------------------------------------------------------------*/
 .bg-discover {
 	background-image: url('http://localhost/wordpress/wp-content/uploads/2018/07/hero-disc.png');
 	height: 50%;
@@ -1290,9 +1309,23 @@ div#products {
 }
 
 
-/*
-* Product / SHOP
-*/
+/*--------------------------------------------------------------
+# Shop Page
+--------------------------------------------------------------*/
+a.show-more {
+    color: black;
+	border-width: 2px;
+	border-style: solid;
+	border-color: black;
+}
+
+.show-more:hover {
+    background-color: black;
+	color: white;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
+}
 
 div#select-filter {
 	font-family: BrandyBF;
@@ -1344,4 +1377,193 @@ select#texture, select#milk {
 
 .sub-title {
 
+}
+
+nav.woocommerce-breadcrumb {
+    color: white;
+}
+
+
+/*--------------------------------------------------------------
+# Contact Page
+--------------------------------------------------------------*/
+
+.sub-title {
+    font-style: italic;
+    font-family: LibreBaskerVille;
+	color:white;
+}
+
+hr {
+  border:none;
+  border-top:2px dotted #f00 !important;
+  color:#fff;
+  background-color:#fff;
+  height:1px;
+  width:50%;
+}
+
+
+input.submit-contact {
+    font-family: LibreBaskerVille;
+    text-transform: uppercase;
+    font-size: 12px !important;
+    font-weight: 600;
+}
+
+
+/*--------------------------------------------------------------
+# 404 Page
+--------------------------------------------------------------*/
+div#primary {
+    min-height: 560px;
+}
+
+section.error-404.not-found.p-8 {
+    position: absolute;
+    top: 30%;
+}
+
+.contact-page {
+	padding-top : 65px;
+}
+
+.title-white {
+	color:white;
+	letter-spacing: 5px;
+}
+
+a:hover{
+	outline: 0;
+	outline-color: unset;
+	outline-style: unset;
+	outline-width: 0px;
+    text-decoration: none !important;
+}
+
+.label-contact {
+	color: white;
+}
+
+input.form-control {
+    background-color: black;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+ input.form-control:focus {
+    color: white;
+    background-color: black;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: none;
+
+}
+
+ textarea.form-control {
+    background-color: black;
+}
+
+textarea.form-control:focus{
+    color: white;
+    background-color: black;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: none;
+}
+
+.bg-black.container-fluid.contact-page {
+    padding-bottom: 60px;
+}
+label.label-contact {
+	/* font-family: LibreBaskerVille;*/
+	text-transform: uppercase;
+}
+
+.submit-contact {
+	background-color: white !important;
+	float: right;
+	color: black !important;
+	border-width: 2px !important;
+	border-style: solid !important;
+	border-color: black !important;
+	font-size: 14px !important;
+	width: 100px;
+	padding: 8px;
+	cursor: pointer;
+}
+
+.submit-contact:hover {
+	background-color: black !important;
+	color: white !important;
+	border-style: solid !important;
+	border-color: white !important;
+	border-width: 2px !important;
+}
+
+
+/*--------------------------------------------------------------
+# Responsive
+--------------------------------------------------------------*/
+
+@media only screen and (max-width: 745px) {
+	div#navbarSupportedContent {
+	    height: initial;
+	}
+}
+
+.parallax-window {
+    height: calc(100vh - 100px);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(0, 0, 0) !important;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: rgba(0,0,0,.5) !important;
+}
+
+.next-fromage {
+    line-height: 0;
+    position: absolute;
+    top: 40%;
+    display: block;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    right: 35px;
+    font-size: 57px;
+	color: white;
+}
+
+.prev-fromage {
+    line-height: 0;
+    position: absolute;
+    top: 40%;
+    display: block;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 57px;
+	color: white;
+}
+
+.next-fromage-link {
+	font-size: 16px !important;
+	color: white !important;
 }

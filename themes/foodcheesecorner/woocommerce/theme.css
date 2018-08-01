@@ -123,10 +123,22 @@ div.prev-tab, div.next-tab {
     cursor: pointer;
 }
 
+div.prev-tab:hover, div.next-tab:hover {
+    color: #867070 !important
+}
+
 div.next-tab {
         right: 0;
 }
 .sub-title {
     font-style: italic;
     font-family: LibreBaskerVille;
+}
+
+a.breadcrumb-link, a.breadcrumb-link:hover, a.breadcrumb-link:visited {
+    color:white !important;
+}
+
+.wrapper-breadcrumb {
+    padding: 30px;
 }
