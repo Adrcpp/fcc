@@ -45,16 +45,16 @@ class Widget_Find_Store extends WP_Widget {
 					<div class="textwidget">
 						<div class="col-sm-12 text-center">
 							<a class="social-fcc p-4" href="https://www.facebook.com/FrenchCheeseCorner/">
-								<img src="http://localhost/wordpress/wp-content/uploads/2018/07/wholefood.png" width="100">
+								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/wholefood.png" width="100">
 							</a>
 							<a class="social-fcc p-4"  href="https://www.instagram.com/frenchcheeseboard/?hl=en">
-								<img src="http://localhost/wordpress/wp-content/uploads/2018/07/walmart.jpg.png" width="150">
+								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/walmart.jpg.png" width="150">
 							</a>
 							<a class="social-fcc p-4" href="https://twitter.com/frenchboard?lang=en">
-								<img src="http://localhost/wordpress/wp-content/uploads/2018/07/target.png" width="160">
+								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/target.png" width="160">
 							</a>
 							<a class="social-fcc p-4" href="https://twitter.com/frenchboard?lang=en">
-								<img src="http://localhost/wordpress/wp-content/uploads/2018/07/trader-joe.png" width="180">
+								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/trader-joe.png" width="180">
 							</a>
 						</div>
 					</div>

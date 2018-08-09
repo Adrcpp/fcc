@@ -26,54 +26,30 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
     {
 		$page = get_page_by_title('Shop', OBJECT, 'page');
 
-		$gallery = $instance['gallery'];
+		//$gallery = $instance['gallery'];
+
+		$gallery = wc_get_products(["product_cat" => 'haute-fromagerie-gourmet']);
+
+
 		$content = $instance['content'];
 
 		$display_gallery =
 		'<div class="container slick-container">
-		 <div class="slick">';
+		 <div class="slick-gourmet">';
 
+		// foreach ($gallery as $key => $value) {
+		// 	$display_gallery .= '<div>';
+		// 	$display_gallery .= '<img class="gallery-haut-fromage" src="'.$value.'"/>';
+		// 	$display_gallery .= '</div>';
+		// }
 		foreach ($gallery as $key => $value) {
-			$display_gallery .= '<div>';
-			$display_gallery .= '<img class="gallery-haut-fromage" src="'.$value.'"/>';
+			$display_gallery .= '<div data-src="'. $value->get_permalink() . '">';
+			$display_gallery .= $value->get_image();
+			$display_gallery .= '<h4 style="display:none;display:none;text-align: center;" class="title-slick title">' .$value->get_name() .'</h4>';
 			$display_gallery .= '</div>';
 		}
-
 		$display_gallery .=  '</div>';
 		$display_gallery .=  '</div>';
-		$display_gallery .=  '<script>
-
-		jQuery(document).ready(function( $ ) {
-
-			$(".slick").slick({
-
-				  speed: 300,
-				  slidesToShow: 1,
-				  slidesToScroll: 1,
-				  responsive: [
-					  {
-						breakpoint: 1025,
-						settings: {
-						  slidesToShow: 1,
-						  slidesToScroll: 1,
-						  infinite: true,
-						  dots: true
-						}
-					  },
-					  {
-						breakpoint: 600,
-						settings: {
-						  slidesToShow: 1,
-						  slidesToScroll: 1
-						}
-					  }
-
-					]
-				});
-
-
-		});
-		</script>';
 	  ?>
 	  <div class="row test">
 		  <div class="col-3 bottom-border"></div> <h1 class=" col title-home haut-title"> Haute Fromagerie Gourmet</h1> <div class="col-3 bottom-border"></div>
@@ -85,21 +61,23 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
                   <p class="text-discover">
                       <?php echo $content; ?>
                   </p>
-                  <a href="<?php echo get_permalink($page); ?>"> <div class="go-shop"> Shop </div></a>
+                  <a class="haute-fr-gourmet-btn" href="<?php echo $gallery[0]->get_permalink() ?>"> <div class="go-shop"> Shop </div></a>
               </div>
-			  <div class="col-md-4 col-sm-12">
+			  <div class="col-md-4 col-sm-12 slick-gourmet-2">
 				  <?php  echo $display_gallery; ?>
 			  </div>
 
 			  <?php self::print_haut_fromage(); ?>
 
             <div class="col-md-6 col-sm-12 text-center">
-                <img src="http://localhost/wordpress/wp-content/uploads/2018/07/roland.png" />
+                <img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/roland.png" />
             </div>
             <div class="col-md-6 col-sm-12">
+				<h3 class="bart title-white pb-5"> Roland Barthélémy</h3>
                 <p class="text-discover">
                     <?php echo $content; ?>
                 </p>
+				<a href="<?php echo '#'; ?>"> <div class="go-shop"> Read More </div></a>
             </div>
 		  </div>
 
@@ -112,14 +90,17 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
 	{
 		$args = array('product_cat' => 'haute-fromagerie-gourmet');
 		$products = wc_get_products( $args );
-		echo '<div class="container-fluid row">';
+
+		echo '<div class="container-fluid row fromage">';
 		foreach ($products as $key => $value) {
 			echo '<div class="col text-center">';
+			echo '<a href="' . $value->get_permalink() . '">';
 			echo $value->get_image();
 			echo '<div class="text-center">';
 			echo '<h4 class="title">' .$value->get_name() .'</h4>';
-			echo '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
+			//echo '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
 			echo '</div>';
+			echo '</a>';
 			echo '</div>';
 		}
 		echo '</div>';
@@ -132,7 +113,7 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
 			$content = $instance['content'];
 	    } else {
 	        $gallery = [];
-			$content = 'yooooooooo';
+			$content = '';
 	    }
 
 	    ?>

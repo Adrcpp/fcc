@@ -26,27 +26,29 @@ class Widget_Haut_Fromage extends WP_Widget {
     {
 		$page = get_page_by_title('Shop', OBJECT, 'page');
 
-		$gallery = $instance['gallery'];
-		$content = $instance['content'];
+		//$gallery = $instance['gallery'];
+		$args = array('product_cat' => 'haute-fromagerie');
+		$gallery = wc_get_products( $args );
 
+		$content = $instance['content'];
 		$display_gallery =
 		'<div class="container slick-container">
 		 <div class="slick">';
 
 		foreach ($gallery as $key => $value) {
-			$display_gallery .= '<div>';
-			$display_gallery .= '<img class="gallery-haut-fromage" src="'.$value.'"/>';
+			$display_gallery .= '<div data-src="'. $value->get_permalink() . '">';
+			$display_gallery .= $value->get_image();
+			$display_gallery .= '<h4 style="display:none;text-align: center;" class="title-slick title">' .$value->get_name() .'</h4>';
 			$display_gallery .= '</div>';
 		}
+		$display_gallery .=  '</div>';
+		$display_gallery .=  '</div>';
 
-		$display_gallery .=  '</div>';
-		$display_gallery .=  '</div>';
 		$display_gallery .=  '<script>
-
 		jQuery(document).ready(function( $ ) {
 
-			$(".slick").slick({
-
+			var slider = $(".slick");
+			var option = {
 				  speed: 300,
 				  slidesToShow: 1,
 				  slidesToScroll: 1,
@@ -68,9 +70,28 @@ class Widget_Haut_Fromage extends WP_Widget {
 						}
 					  }
 
-					]
-				});
+				  ],
+			  };
 
+			slider.slick(option);
+
+			$(".slick").on("afterChange", function(event, slick, direction){
+				$link = $(".slick-current:eq(0)").children().children().data("src");
+				$(".haute-fr-btn").attr("href", $link);
+			});
+
+			var slider_gourmet = $(".slick-gourmet");
+			slider_gourmet.slick(option);
+
+			slider_gourmet .on("afterChange", function(event, slick, direction){
+				$link = $(".slick-current:eq(1)").children().children().data("src");
+				$(".haute-fr-gourmet-btn").attr("href", $link);
+			});
+
+			if (window.matchMedia("(max-width: 768px)").matches) {
+				$(".title-slick").show();
+				$(".fromage").hide();
+			}
 
 		});
 		</script>';
@@ -80,15 +101,16 @@ class Widget_Haut_Fromage extends WP_Widget {
 	  </div>
 	  <div class="haut-fromage">
 		  <div class="row align-items-center">
-			  <div class="col-md-4 col-sm-12">
+			  <div class="col-md-4 col-sm-12 slick2">
 				  <?php  echo $display_gallery; ?>
 			  </div>
+
 			  <div class="col-md-2"></div>
 			  <div class="col-md-6 col-sm-12">
 				  <p class="text-discover">
 					  <?php echo $content; ?>
 				  </p>
-				  <a href="<?php echo get_permalink($page); ?>"> <div class="go-shop"> Shop </div></a>
+				  <a class="haute-fr-btn" href="<?php echo $gallery[0]->get_permalink(); ?>"> <div class="go-shop"> Shop </div></a>
 			  </div>
 			  <?php self::print_haut_fromage(); ?>
 		  </div>
@@ -100,14 +122,15 @@ class Widget_Haut_Fromage extends WP_Widget {
 	{
 		$args = array('product_cat' => 'haute-fromagerie');
 		$products = wc_get_products( $args );
-		echo '<div class="row">';
+		echo '<div class="row fromage">';
 		foreach ($products as $key => $value) {
 			echo '<div class="col text-center">';
+			echo '<a href="' . $value->get_permalink() . '">';
 			echo $value->get_image();
 			echo '<div class="text-center">';
 			echo '<h4 class="title">' .$value->get_name() .'</h4>';
-			//echo '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
 			echo '</div>';
+			echo '</a>';
 			echo '</div>';
 		}
 		echo '</div>';
@@ -120,7 +143,7 @@ class Widget_Haut_Fromage extends WP_Widget {
 			$content = $instance['content'];
 	    } else {
 	        $gallery = [];
-			$content = 'yooooooooo';
+			$content = '';
 	    }
 
 	    ?>

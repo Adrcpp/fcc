@@ -125,4 +125,14 @@ class Header_Logo {
     		echo '<a class="logo-top" href="'. get_home_url() .'"><img src="' . $image_attributes[0] . '" class="img-fluid px-4 header-logo" /></a>';
     	}
     }
+
+    public static function get_menu_logo_button()
+    {
+        global $wpdb;
+        $value = $wpdb->get_var( $wpdb->prepare("SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = %s LIMIT 1" , "header_logo_menu") );
+
+        if ( $image_attributes = wp_get_attachment_image_src( $value, $image_size ) ) {
+            echo '<img src="' . $image_attributes[0] . '" class="img-fluid px-4 header-logo" />';
+        }
+    }
 }

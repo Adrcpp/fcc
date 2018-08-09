@@ -43,15 +43,15 @@ class Widget_Social extends WP_Widget {
             <div class="row"><!-- START CELL-->
                 <div class="textwidget"><h1 class="title-home">follows us</h1>
                     <div class="col-sm-12 text-center">
-                    <a class="social-fcc" href="https://www.facebook.com/FrenchCheeseCorner/">
-                        <img src="http://localhost/wordpress/wp-content/uploads/2018/07/facebook-2.png" width="45">
-                    </a>
-                    <a class="social-fcc"  href="https://www.instagram.com/frenchcheeseboard/?hl=en">
-                        <img src="http://localhost/wordpress/wp-content/uploads/2018/07/insta-1.png" width="50">
-                    </a>
-                    <a class="social-fcc" href="https://twitter.com/frenchboard?lang=en">
-                        <img src="http://localhost/wordpress/wp-content/uploads/2018/07/twitter-2.png" width="45">
-                    </a>
+					<a class="social-fcc" tatget="_blank" href="https://www.facebook.com/FrenchCheeseCorner/">
+						<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/facebook-2.png" width="45">
+					</a>
+					<a class="social-fcc" tatget="_blank" href="https://www.instagram.com/frenchcheeseboard/?hl=en">
+						<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/insta-1.png" width="50">
+					</a>
+					<a class="social-fcc" tatget="_blank" href="https://twitter.com/frenchboard?lang=en">
+						<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/twitter-2.png" width="45">
+					</a>
                 </div>
                 </div>
 		   </div>

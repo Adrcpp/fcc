@@ -36,7 +36,7 @@ class Widget_Hero extends WP_Widget {
 		<script>
 		jQuery(document).ready(function( $ ) {
 
-			$('.parallax-window').parallax({imageSrc: 'http://localhost/wordpress/wp-content/uploads/2018/07/hero-disc.png'});
+			$('.parallax-window').parallax({imageSrc: '<?php echo get_site_url() . '/wp-content/uploads/2018/07/hero-disc.png'; ?>'});
 			$('.parallax-window').parent().parent().css('padding-bottom', 0);
 
 		});

@@ -31,7 +31,10 @@ class FCC_Plugin {
     {
         spl_autoload_register(function($class){
 
-            $filename = __DIR__ . '\\' . $class . '.php';
+            $filename =  __DIR__ . '/' . $class . '.php';
+            $filename = str_replace("\\", "/", $filename);
+
+            //die(var_dump( $filename));
             // var_dump($filename);
             if (!file_exists($filename)) {
                 return false; // End autoloader function and skip to the next if available.
@@ -65,6 +68,14 @@ class FCC_Plugin {
             remove_post_type_support( 'page', 'editor' );
         	remove_post_type_support( 'product', 'editor' );
         }, 99);
+        add_action( 'wp_enqueue_scripts', [$this, 'fcc_scripts'] );
+    }
+
+    public function fcc_scripts()
+    {
+        wp_register_script('filter_ajax_scripts', plugins_url( '/js/filter_ajax_scripts.js', __FILE__ ));
+        wp_localize_script('filter_ajax_scripts', 'WPURLS', array( 'siteurl' => admin_url( 'admin-ajax.php' ) ));
+        wp_enqueue_script( 'filter_ajax_scripts' );
     }
 }
 

@@ -89,15 +89,21 @@ class Widget_Product_Filter extends \WP_Widget {
 
 
 		foreach ($products as $key => $value) {
+            $data = get_post_meta($value->get_id(), "fcc_product_info");
 
 			echo '<div class="col-sm-4 text-center">';
 			echo $value->get_image();
 			echo '<div class="text-center">';
 			echo '<h4 class="title">' .$value->get_name() .'</h4>';
-			echo '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
+            echo '<h6 class="sub-title">' . $data[0]["subtitle"] .'</h6>';
+			echo '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() .'">Shop now</a> ' ;
+            echo '<input type="text" class="quantity-product input-q" name="quantity" value="1" class="qty" style="margin-bottom: 0px !important" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+            <div class="plus-minus">
+            <input type="button" value="+" class="qtyplus stack input-q"  field="quantity" style="font-weight: bold;" />
+            <input type="button" value="-" class="qtyminus stack input-q" field="quantity" style="font-weight: bold;" />
+            </div></div>';
 			echo '</div>';
 			echo '</div>';
-
 		}
 
 		echo '</div></div></div>';
@@ -105,9 +111,9 @@ class Widget_Product_Filter extends \WP_Widget {
         <script>
             jQuery(document).ready(function( $ ) {
 
-                $('.parallax-window').parallax({imageSrc: 'http://localhost/wordpress/wp-content/uploads/2018/07/shop-hero-img.png'});
+                    $('.parallax-window').parallax({imageSrc: '<?php echo  get_site_url() . '/wp-content/uploads/2018/07/shop-hero-img.png'; ?> '});
                 $('.parallax-window').parent().parent().css('padding-bottom', 0);
-                
+
             });
         </script>
         <?php
@@ -143,11 +149,11 @@ function myplugin_register_widgets() {
     register_widget( 'Widget_Product_Filter' );
 }
 
-
 /*
 *  Add the ajax call in the front end for filtering the products:
 */
 add_action( 'wp_ajax_filter_product', 'ajax_filter_product' );
+add_action( 'wp_ajax_nopriv_filter_product', 'ajax_filter_product' );
 function ajax_filter_product() {
 
     $milk = sanitize_text_field($_POST['milk']);
@@ -175,15 +181,22 @@ function ajax_filter_product() {
     $resp = "";
     $count = 0;
 
-    foreach ($products as $key => $value) {
+    foreach ($products as $key => $value)
+    {
         $cat_ids = $value->get_category_ids();
         if ( isSelected($all, $cat_ids, $is_unique, $milk, $texture) ) {
-
+            $data = get_post_meta($value->get_id(), "fcc_product_info");
             $resp .= '<div class="col-sm-4 text-center">';
             $resp .= $value->get_image();
             $resp .= '<div class="text-center">';
             $resp .= '<h4 class="title">' .$value->get_name() .'</h4>';
-            $resp .= '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
+            $resp .= '<h6 class="sub-title">' . $data[0]["subtitle"] .'</h6>';
+            $resp .=  '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() .'">Shop now</a> ' ;
+            $resp .=  '<input type="text" class="quantity-product input-q" name="quantity" value="1" class="qty" style="margin-bottom: 0px !important" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+            <div class="plus-minus">
+            <input type="button" value="+" class="qtyplus stack input-q"  field="quantity" style="font-weight: bold;" />
+            <input type="button" value="-" class="qtyminus stack input-q" field="quantity" style="font-weight: bold;" />
+            </div></div>';
             $resp .= '</div>';
             $resp .= '</div>';
             ++$count;
@@ -199,7 +212,7 @@ function ajax_filter_product() {
 function isSelected($all, $cat_ids, $is_unique, $milk, $texture)
 {
     if ($all == true)
-    return true;
+        return true;
 
     if ($is_unique) {
         if ($milk != null) {

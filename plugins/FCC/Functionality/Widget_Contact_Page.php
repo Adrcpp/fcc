@@ -28,28 +28,30 @@ class Widget_Contact_Page extends WP_Widget {
 
 							<div class="p-2 col">
 								<a href="https://www.facebook.com/FrenchCheeseCorner/">
-									<img src="http://localhost/wordpress/wp-content/uploads/2018/07/twitter-1.png">
+									<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/facebook-1.png" >
 									<h5 class="title-social">Like us</h5>
 									<p class="subtitle-social">
-										On facebook
+										On Facebook
 									</p>
 								</a>
 							</div>
 							<div class="p-2 col">
 								<a href="https://www.facebook.com/FrenchCheeseCorner/">
-									<img src="http://localhost/wordpress/wp-content/uploads/2018/07/facebook-1.png" >
-									<h5 class="title-social">Like us</h5>
+
+									<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/insta.png" >
+									<h5 class="title-social">Follow us</h5>
 									<p class="subtitle-social">
-										On facebook
+										On Instagram
 									</p>
 								</a>
 							</div>
 							<div class="p-2 col">
 								<a href="https://www.instagram.com/frenchcheesecorner/">
-									<img src="http://localhost/wordpress/wp-content/uploads/2018/07/insta.png" >
-									<h5 class="title-social">Like us</h5>
+
+									<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/twitter-1.png">
+									<h5 class="title-social">Tweet with us</h5>
 									<p class="subtitle-social">
-										On facebook
+										On Twitter
 									</p>
 								</a>
 							</div>

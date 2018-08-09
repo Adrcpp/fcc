@@ -36,14 +36,16 @@ class WP_Widget_Woo_Slider extends WP_Widget {
 		echo '<h1 class="title-cheese text-center col-12">Our cheeses</h1>';
 		echo '<div class="container slick-container">';
 
-		echo '<div class="slick">';
+		echo '<div class="slick-woo">';
 
 		foreach ($products as $key => $value) {
+			$data = get_post_meta($value->get_id(), "fcc_product_info");
 			echo '<div class=" text-center">';
 			echo $value->get_image();
 			echo '<div class="text-center">';
 			echo '<h4 class="title">' .$value->get_name() .'</h4>';
-			echo '<a class="show-more" href="' . $value->get_permalink() .'">Show more</a>';
+			echo '<h6 class="sub-title">' . $data[0]["subtitle"] .'</h6>';
+			echo '<a class="show-more" href="' . $value->get_permalink() .'">Shop now</a>';
 			echo '</div>';
 			echo '</div>';
 
@@ -55,7 +57,7 @@ class WP_Widget_Woo_Slider extends WP_Widget {
 
 		jQuery(document).ready(function( $ ) {
 
-			$(".slick").slick({
+			$(".slick-woo").slick({
 
 				  speed: 300,
 				  slidesToShow: 3,
@@ -80,8 +82,6 @@ class WP_Widget_Woo_Slider extends WP_Widget {
 
 					]
 				});
-
-
 		});
 
 		</script>';
