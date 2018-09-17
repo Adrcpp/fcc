@@ -17,45 +17,48 @@ class Widget_Social extends WP_Widget {
 	}
 
 	// Creating widget front-end
-    public static function render_widget ()
+    public static function render_widget ($insta = false)
     {
-        self::widget(null, null);
+        self::widget(null, null, $insta);
     }
 
-	public function widget( $args, $instance )
+	public function widget( $args, $instance, $insta = true)
     {
-        $content ='
-        <div class="before-row pt-5"><!-- ROW -->
-            <div class="row"><!-- START CELL-->
-                <div class="textwidget">
-                    <h1 class="title-home">Recipes &amp; pairings</h1>
-                </div>
-            </div>
-        </div>
+		$content = "";
+		if ($insta) {
+	        $content ='
+	        <div class="before-row pt-5"><!-- ROW -->
+	            <div class="row"><!-- START CELL-->
+	                <div class="textwidget">
+	                    <h1 class="title-home">Recipes &amp; pairings</h1>
+	                </div>
+	            </div>
+	        </div>
 
-        <div class="before-row"><!-- ROW -->
-            <div class="row"><!-- START CELL-->
-                [instagram-feed num=6 cols=6 showfollow=false]
-            </div>
-         </div>
-
-        <div class="before-row"><!-- ROW -->
-            <div class="row"><!-- START CELL-->
-                <div class="textwidget"><h1 class="title-home">follows us</h1>
-                    <div class="col-sm-12 text-center">
-					<a class="social-fcc" tatget="_blank" href="https://www.facebook.com/FrenchCheeseCorner/">
-						<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/facebook-2.png" width="45">
-					</a>
-					<a class="social-fcc" tatget="_blank" href="https://www.instagram.com/frenchcheeseboard/?hl=en">
-						<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/insta-1.png" width="50">
-					</a>
-					<a class="social-fcc" tatget="_blank" href="https://twitter.com/frenchboard?lang=en">
-						<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/twitter-2.png" width="45">
-					</a>
-                </div>
-                </div>
-		   </div>
-        </div>';
+	        <div class="before-row"><!-- ROW -->
+	            <div class="row"><!-- START CELL-->
+	                [instagram-feed num=6 cols=6 showfollow=false]
+	            </div>
+	         </div>';
+		 }
+		 $content .= '
+	        <div class="before-row"><!-- ROW -->
+	            <div class="row"><!-- START CELL-->
+	                <div class="textwidget"><h1 class="title-home">follows us</h1>
+	                    <div class="col-sm-12 text-center">
+						<a class="social-fcc" target="_blank" href="https://www.facebook.com/FrenchCheeseCorner/">
+							<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/facebook-2.png" width="45">
+						</a>
+						<a class="social-fcc" target="_blank"  href="https://www.instagram.com/frenchcheeseboard/?hl=en">
+							<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/insta-1.png" width="50">
+						</a>
+						<a class="social-fcc" target="_blank"  href="https://twitter.com/frenchboard?lang=en">
+							<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/twitter-2.png" width="45">
+						</a>
+	                </div>
+	                </div>
+			   </div>
+	        </div>';
 
         echo do_shortcode($content);
 	}

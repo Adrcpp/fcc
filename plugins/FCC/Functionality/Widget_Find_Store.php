@@ -44,16 +44,16 @@ class Widget_Find_Store extends WP_Widget {
 				<div class="row"><!-- START CELL-->
 					<div class="textwidget">
 						<div class="col-sm-12 text-center">
-							<a class="social-fcc p-4" href="https://www.facebook.com/FrenchCheeseCorner/">
+							<a class="social-fcc p-4" href="">
 								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/wholefood.png" width="100">
 							</a>
-							<a class="social-fcc p-4"  href="https://www.instagram.com/frenchcheeseboard/?hl=en">
+							<a class="social-fcc p-4"  href="">
 								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/walmart.jpg.png" width="150">
 							</a>
-							<a class="social-fcc p-4" href="https://twitter.com/frenchboard?lang=en">
+							<a class="social-fcc p-4" href="">
 								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/target.png" width="160">
 							</a>
-							<a class="social-fcc p-4" href="https://twitter.com/frenchboard?lang=en">
+							<a class="social-fcc p-4" href="">
 								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/trader-joe.png" width="180">
 							</a>
 						</div>
@@ -63,60 +63,88 @@ class Widget_Find_Store extends WP_Widget {
 		</div>
 
 		<div class="container"><!-- ROW -->
+
 			<div class="row text-center"><!-- START CELL-->
 				<div class="col-sm-12"><!-- START CELL-->
 					<p>Can't find your store in the list ? Tell where you'd like to find our</p>
 					<p>Saint Agur, and we will do our best to reach your store</p>
 				</div>
 
-			</div>
-			<div class="row"><!-- START CELL-->
+				<div class="show-msg" id="error">
 
-				<div class="col-sm-3"> </div>
-				<div class="col-sm-9">
-					<input class="store-input" type="text" placeholder="City"> </input>
-					<input class="store-input" type="text" placeholder="Email"> </input>
 				</div>
 			</div>
-			<div class="row"><!-- START CELL-->
-				<div class="col-sm-3"> </div>
-				<div class="col-sm-5">
-					<input class="store-input" type="checkbox" placeholder="City"> </input>
-					<label>Subscribe to our Newsletter</label>
+			<form id="nlt" action="https://frenchcheesecorner.us19.list-manage.com/subscribe/post-json?u=566471b2380f7022f8b20cbcf&amp;id=c35fa349d1" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+				<div class="row"><!-- START CELL-->
+
+					<div class="col-sm-3"> </div>
+					<div class="col-sm-9">
+						<input class="store-input" type="text" placeholder="City"> </input>
+						<input class="store-input" type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required> </input>
+						<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_566471b2380f7022f8b20cbcf_c35fa349d1" tabindex="-1" value=""></div>
+					    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class=" subscribe">
+
+					</div>
 				</div>
-				<div class="col-sm-4"> </div>
-			</div>
+				<div class="row"><!-- START CELL-->
+					<div class="col-sm-3"> </div>
+					<div class="col-sm-5">
+						<input class="store-input" id="checkbox-nlt" name="checkbox" type="checkbox"> </input>
+						<label>Subscribe to our Newsletter</label>
+					</div>
+					<div class="col-sm-4"> </div>
+				</div>
+			</form>
 		</div>
-
-<?php
-
+	<?php
 	}
 
 	// Widget Backend
 	public function form( $instance )
     {
-		if ( isset( $instance[ 'title' ] ) ) {
-			$title = $instance[ 'title' ];
-		}
-		else {
-			$title = __( 'New title', 'wpb_widget_domain' );
-		}
-		// Widget admin form
-		?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-		</p>
-		<?php
+
 	}
 
 	public function update( $new_instance, $old_instance )
     {
-		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		return $instance;
+
 	}
 }
+/*
+*  Add the ajax call in the front end for filtering the products:
+*/
+add_action( 'wp_ajax_newsletter', 'ajax_newsletter' );
+add_action( 'wp_ajax_nopriv_newsletter', 'ajax_newsletter' );
+
+function ajax_newsletter()
+{
+	header( "Content-Type: application/json" );
+	header('Access-Control-Allow-Origin: *');
+
+	$url = $_POST['url'];
+	$email = $_POST['EMAIL'];
+	$myvars = 'EMAIL=' . urlencode($email) . "&b_566471b2380f7022f8b20cbcf_c35fa349d1=&subscribe=Subscribe";
+
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url );
+	curl_setopt($ch, CURLOPT_POST, 1 );
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $myvars);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	$postResult = curl_exec($ch);
+
+	// if ($response === false) {
+    //      throw new Exception(curl_error($ch), curl_errno($ch));
+    // }
+	// var_dump($postResult);
+	// var_dump(@curl_getinfo($ch));
+
+	echo $postResult;
+	curl_close($ch);
+	wp_die();
+}
+
 
 add_action( 'widgets_init',  function () {
         register_widget( 'Widget_Find_Store' );

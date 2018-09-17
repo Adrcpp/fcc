@@ -14,9 +14,7 @@
  * @package WooCommerce/Templates
  * @version 3.4.0
  */
-
 defined( 'ABSPATH' ) || exit;
-
 if ( $max_value && $min_value === $max_value ) {
 	?>
 	<div class="quantity hidden">

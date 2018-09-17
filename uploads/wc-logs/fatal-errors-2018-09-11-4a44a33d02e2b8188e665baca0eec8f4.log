@@ -1,0 +1,112 @@
+2018-09-11T14:07:06+00:00 CRITICAL Uncaught Error: Class 'Widget_Social_Hero' not found in /var/www/html/FCC/wp-includes/class-wp-widget-factory.php:100
+Stack trace:
+#0 /var/www/html/FCC/wp-includes/widgets.php(115): WP_Widget_Factory->register('Widget_Social_H...')
+#1 /var/www/html/FCC/wp-content/plugins/FCC/Functionality/Widget_Hero_Social.php(87): register_widget('Widget_Social_H...')
+#2 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): {closure}('')
+#3 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#5 /var/www/html/FCC/wp-includes/widgets.php(1649): do_action('widgets_init')
+#6 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): wp_widgets_init('')
+#7 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#9 /var/www/html/FCC/wp-settings.php(450): do_action('init')
+#10 /var/www/html/FCC/wp-config.php(89): re
+
+2018-09-11T14:07:07+00:00 CRITICAL Uncaught Error: Class 'Widget_Social_Hero' not found in /var/www/html/FCC/wp-includes/class-wp-widget-factory.php:100
+Stack trace:
+#0 /var/www/html/FCC/wp-includes/widgets.php(115): WP_Widget_Factory->register('Widget_Social_H...')
+#1 /var/www/html/FCC/wp-content/plugins/FCC/Functionality/Widget_Hero_Social.php(87): register_widget('Widget_Social_H...')
+#2 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): {closure}('')
+#3 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#5 /var/www/html/FCC/wp-includes/widgets.php(1649): do_action('widgets_init')
+#6 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): wp_widgets_init('')
+#7 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#9 /var/www/html/FCC/wp-settings.php(450): do_action('init')
+#10 /var/www/html/FCC/wp-config.php(89): re
+
+2018-09-11T14:07:21+00:00 CRITICAL Uncaught Error: Class 'Widget_Social_Hero' not found in /var/www/html/FCC/wp-includes/class-wp-widget-factory.php:100
+Stack trace:
+#0 /var/www/html/FCC/wp-includes/widgets.php(115): WP_Widget_Factory->register('Widget_Social_H...')
+#1 /var/www/html/FCC/wp-content/plugins/FCC/Functionality/Widget_Hero_Social.php(87): register_widget('Widget_Social_H...')
+#2 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): {closure}('')
+#3 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#5 /var/www/html/FCC/wp-includes/widgets.php(1649): do_action('widgets_init')
+#6 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): wp_widgets_init('')
+#7 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#9 /var/www/html/FCC/wp-settings.php(450): do_action('init')
+#10 /var/www/html/FCC/wp-config.php(89): re
+
+2018-09-11T14:07:24+00:00 CRITICAL Uncaught Error: Class 'Widget_Social_Hero' not found in /var/www/html/FCC/wp-includes/class-wp-widget-factory.php:100
+Stack trace:
+#0 /var/www/html/FCC/wp-includes/widgets.php(115): WP_Widget_Factory->register('Widget_Social_H...')
+#1 /var/www/html/FCC/wp-content/plugins/FCC/Functionality/Widget_Hero_Social.php(87): register_widget('Widget_Social_H...')
+#2 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): {closure}('')
+#3 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#5 /var/www/html/FCC/wp-includes/widgets.php(1649): do_action('widgets_init')
+#6 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): wp_widgets_init('')
+#7 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#9 /var/www/html/FCC/wp-settings.php(450): do_action('init')
+#10 /var/www/html/FCC/wp-config.php(89): re
+
+2018-09-11T14:07:26+00:00 CRITICAL Uncaught Error: Class 'Widget_Social_Hero' not found in /var/www/html/FCC/wp-includes/class-wp-widget-factory.php:100
+Stack trace:
+#0 /var/www/html/FCC/wp-includes/widgets.php(115): WP_Widget_Factory->register('Widget_Social_H...')
+#1 /var/www/html/FCC/wp-content/plugins/FCC/Functionality/Widget_Hero_Social.php(87): register_widget('Widget_Social_H...')
+#2 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): {closure}('')
+#3 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#5 /var/www/html/FCC/wp-includes/widgets.php(1649): do_action('widgets_init')
+#6 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): wp_widgets_init('')
+#7 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#9 /var/www/html/FCC/wp-settings.php(450): do_action('init')
+#10 /var/www/html/FCC/wp-config.php(89): re
+
+2018-09-11T14:07:41+00:00 CRITICAL Uncaught Error: Class 'Widget_Social_Hero' not found in /var/www/html/FCC/wp-includes/class-wp-widget-factory.php:100
+Stack trace:
+#0 /var/www/html/FCC/wp-includes/widgets.php(115): WP_Widget_Factory->register('Widget_Social_H...')
+#1 /var/www/html/FCC/wp-content/plugins/FCC/Functionality/Widget_Hero_Social.php(87): register_widget('Widget_Social_H...')
+#2 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): {closure}('')
+#3 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#5 /var/www/html/FCC/wp-includes/widgets.php(1649): do_action('widgets_init')
+#6 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): wp_widgets_init('')
+#7 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#9 /var/www/html/FCC/wp-settings.php(450): do_action('init')
+#10 /var/www/html/FCC/wp-config.php(89): re
+
+2018-09-11T14:08:09+00:00 CRITICAL Uncaught Error: Class 'Widget_Social_Hero' not found in /var/www/html/FCC/wp-includes/class-wp-widget-factory.php:100
+Stack trace:
+#0 /var/www/html/FCC/wp-includes/widgets.php(115): WP_Widget_Factory->register('Widget_Social_H...')
+#1 /var/www/html/FCC/wp-content/plugins/FCC/Functionality/Widget_Hero_Social.php(87): register_widget('Widget_Social_H...')
+#2 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): {closure}('')
+#3 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#5 /var/www/html/FCC/wp-includes/widgets.php(1649): do_action('widgets_init')
+#6 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): wp_widgets_init('')
+#7 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#9 /var/www/html/FCC/wp-settings.php(450): do_action('init')
+#10 /var/www/html/FCC/wp-config.php(89): re
+
+2018-09-11T14:08:40+00:00 CRITICAL Uncaught Error: Class 'Widget_Social_Hero' not found in /var/www/html/FCC/wp-includes/class-wp-widget-factory.php:100
+Stack trace:
+#0 /var/www/html/FCC/wp-includes/widgets.php(115): WP_Widget_Factory->register('Widget_Social_H...')
+#1 /var/www/html/FCC/wp-content/plugins/FCC/Functionality/Widget_Hero_Social.php(87): register_widget('Widget_Social_H...')
+#2 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): {closure}('')
+#3 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#4 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#5 /var/www/html/FCC/wp-includes/widgets.php(1649): do_action('widgets_init')
+#6 /var/www/html/FCC/wp-includes/class-wp-hook.php(286): wp_widgets_init('')
+#7 /var/www/html/FCC/wp-includes/class-wp-hook.php(310): WP_Hook->apply_filters(NULL, Array)
+#8 /var/www/html/FCC/wp-includes/plugin.php(453): WP_Hook->do_action(Array)
+#9 /var/www/html/FCC/wp-settings.php(450): do_action('init')
+#10 /var/www/html/FCC/wp-config.php(89): re
+

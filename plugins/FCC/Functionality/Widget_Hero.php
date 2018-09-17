@@ -27,7 +27,7 @@ class Widget_Hero extends WP_Widget {
 	  ?>
 		<div class="col-sm-12 product-filter parallax-window" data-parallax="scroll" >
 
-			<h1 id="select-filter" class="title-home text-center p-4 hero-title">
+			<h1 id="discover-hero" class="title-home text-center p-4 hero-title">
 				discover our cheeses
 			</h1>
 

@@ -62,7 +62,7 @@ class Widget_Product_Filter extends \WP_Widget {
 			$milk_options .= "<option value='". $value->term_id. "'>" . $value->name ."</option>";
 		}
 
-		echo '<div class="col-sm-12 product-filter parallax-window">
+		echo '<div class="filter-hero col-sm-12 product-filter parallax-window">
 			<div id="select-filter" class="text-center p-4">
 				Show me <select id="texture">'
 				. $texture_options.
@@ -73,6 +73,7 @@ class Widget_Product_Filter extends \WP_Widget {
 				</select> milk
 			</div>
 		</div>';
+
 		$args = array();
 		//$products = wc_get_products( $args );
 		//var_dump($products[0]);
@@ -90,20 +91,37 @@ class Widget_Product_Filter extends \WP_Widget {
 
 		foreach ($products as $key => $value) {
             $data = get_post_meta($value->get_id(), "fcc_product_info");
+            //
+			// echo '<div class="col-sm-4 text-center">';
+			// echo $value->get_image();
+			// echo '<div class="text-center">';
+			// echo '<h4 class="title">' .$value->get_name() .'</h4>';
+            // echo '<h6 class="sub-title">' . $data[0]["subtitle"] .'</h6>';
+			// // echo '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() .'">Shop now</a> ' ;
+            //
+            // echo '<div class="product-q"> <a class="show-more" href="' . get_site_url() . "/?add-to-cart=" . $value->get_id() .'&quantity=1">Shop now</a> ' ;
+            //
+            // echo '<input type="text" class="quantity-product input-q" name="quantity" value="1" class="qty" style="margin-bottom: 0px !important" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+            //     <div class="plus-minus">
+            //
+            //         <input type="button" value="+" class="qtyplus stack input-q"  field="quantity" style="font-weight: bold;" />
+            //         <input type="button" value="-" class="qtyminus stack input-q" field="quantity" style="font-weight: bold;" />
+            //     </div>
+            // </div>';
+			// echo '</div>';
+			// echo '</div>';
 
-			echo '<div class="col-sm-4 text-center">';
-			echo $value->get_image();
-			echo '<div class="text-center">';
-			echo '<h4 class="title">' .$value->get_name() .'</h4>';
+
+            echo '<div class="col-sm-4 text-center">';
+            echo '<a  href="' . $value->get_permalink() . '">' . $value->get_image() .'</a>';
+            echo '<div class="text-center">';
+            echo '<h4 class="title">' .$value->get_name() .'</h4>';
             echo '<h6 class="sub-title">' . $data[0]["subtitle"] .'</h6>';
-			echo '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() .'">Shop now</a> ' ;
-            echo '<input type="text" class="quantity-product input-q" name="quantity" value="1" class="qty" style="margin-bottom: 0px !important" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
-            <div class="plus-minus">
-            <input type="button" value="+" class="qtyplus stack input-q"  field="quantity" style="font-weight: bold;" />
-            <input type="button" value="-" class="qtyminus stack input-q" field="quantity" style="font-weight: bold;" />
-            </div></div>';
-			echo '</div>';
-			echo '</div>';
+            // echo '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() .'">Shop now</a> ' ;
+
+            echo '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() . '">Discover</a> </div>' ;
+            echo '</div>';
+            echo '</div>';
 		}
 
 		echo '</div></div></div>';
@@ -111,7 +129,7 @@ class Widget_Product_Filter extends \WP_Widget {
         <script>
             jQuery(document).ready(function( $ ) {
 
-                    $('.parallax-window').parallax({imageSrc: '<?php echo  get_site_url() . '/wp-content/uploads/2018/07/shop-hero-img.png'; ?> '});
+                $('.parallax-window').parallax({imageSrc: '<?php echo  get_site_url() . '/wp-content/uploads/2018/07/shop-hero-img.png'; ?> '});
                 $('.parallax-window').parent().parent().css('padding-bottom', 0);
 
             });
@@ -121,12 +139,13 @@ class Widget_Product_Filter extends \WP_Widget {
 
 	// Widget Backend
 	public function form( $instance ) {
+
 		if ( isset( $instance[ 'title' ] ) ) {
 			$title = $instance[ 'title' ];
-		}
-		else {
+		} else {
 			$title = __( 'New title', 'wpb_widget_domain' );
 		}
+
 		// Widget admin form
 		?>
 		<p>
@@ -187,16 +206,16 @@ function ajax_filter_product() {
         if ( isSelected($all, $cat_ids, $is_unique, $milk, $texture) ) {
             $data = get_post_meta($value->get_id(), "fcc_product_info");
             $resp .= '<div class="col-sm-4 text-center">';
-            $resp .= $value->get_image();
+            $resp .= '<a  href="' . $value->get_permalink() . '">' . $value->get_image() .'</a>';
             $resp .= '<div class="text-center">';
             $resp .= '<h4 class="title">' .$value->get_name() .'</h4>';
             $resp .= '<h6 class="sub-title">' . $data[0]["subtitle"] .'</h6>';
-            $resp .=  '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() .'">Shop now</a> ' ;
-            $resp .=  '<input type="text" class="quantity-product input-q" name="quantity" value="1" class="qty" style="margin-bottom: 0px !important" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+            $resp .=  '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() .'">Discover</a> </div>' ;
+            /*$resp .=  '<input type="text" class="quantity-product input-q" name="quantity" value="1" class="qty" style="margin-bottom: 0px !important" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
             <div class="plus-minus">
             <input type="button" value="+" class="qtyplus stack input-q"  field="quantity" style="font-weight: bold;" />
             <input type="button" value="-" class="qtyminus stack input-q" field="quantity" style="font-weight: bold;" />
-            </div></div>';
+            </div></div>';*/
             $resp .= '</div>';
             $resp .= '</div>';
             ++$count;

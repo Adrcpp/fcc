@@ -1,8 +1,8 @@
 <?php
 /**
- * Shop breadcrumb
+ * Show messages
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/global/breadcrumb.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/notices/success.php.
  *
  * HOWEVER, on occasion WooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
@@ -13,26 +13,19 @@
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     2.3.0
- * @see         woocommerce_breadcrumb()
+ * @version     3.3.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! empty( $breadcrumb ) ) {
-
-	echo '<div class="wrapper-breadcrumb">';
-
-	foreach ( $breadcrumb as $key => $crumb ) {
-		$delim = "";
-		if ( sizeof( $breadcrumb ) !== $key + 1 )
-			$delim =  ">";
-		echo '<a class="breadcrumb-link" href="' . esc_url( $crumb[1] ) . '">' ."&nbsp;" . esc_html( $crumb[0] ) . "&nbsp;" . $delim . '</a>';
-
-	}
-
-	echo '</div>';
-
+if ( ! $messages ) {
+	return;
 }
+
+?>
+
+	<?php foreach ( $messages as $message ) : ?>
+		<div class="woocommerce-message" role="alert"><?php echo wp_kses_post( $message ); ?></div>
+	<?php endforeach; ?>

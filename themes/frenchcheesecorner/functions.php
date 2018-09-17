@@ -263,7 +263,7 @@ function add_async_forscript($url)
 }
 add_filter('clean_url', 'add_async_forscript', 11, 1);
 
-if(!is_admin()) {
+if (!is_admin()) {
     function add_asyncdefer_attribute($tag, $handle) {
         // if the unique handle/name of the registered script has 'async' in it
         if (strpos($handle, 'async') !== false) {
@@ -281,4 +281,160 @@ if(!is_admin()) {
         }
     }
     add_filter('script_loader_tag', 'add_asyncdefer_attribute', 10, 2);
+}
+
+/* Checkout page: default open shipping adress */
+// add_filter( 'woocommerce_ship_to_different_address_checked', '__return_true' );
+
+
+/*********************************************************************************************/
+/** WooCommerce - Modify each individual input type $args defaults /**
+*********************************************************************************************/
+
+add_filter('woocommerce_form_field_args','wc_form_field_args',10,3);
+
+function wc_form_field_args( $args, $key, $value = null ) {
+/*
+** This is not meant to be here, but it serves as a reference
+** of what is possible to be changed.
+$defaults = array(
+    'type'              => 'text',
+    'label'             => '',
+    'description'       => '',
+    'placeholder'       => '',
+    'maxlength'         => false,
+    'required'          => false,
+    'id'                => $key,
+    'class'             => array(),
+    'label_class'       => array(),
+    'input_class'       => array(),
+    'return'            => false,
+    'options'           => array(),
+    'custom_attributes' => array(),
+    'validate'          => array(),
+    'default'           => '',
+);
+*********************************************************************************************/
+
+// Start field type switch case
+
+switch ( $args['type'] ) {
+
+    case "select" :  /* Targets all select input type elements, except the country and state select input types */
+        $args['class'][] = 'form-group'; // Add a class to the field's html element wrapper - woocommerce input types (fields) are often wrapped within a <p></p> tag
+        $args['input_class'] = array('form-control', 'input-lg'); // Add a class to the form input itself
+        //$args['custom_attributes']['data-plugin'] = 'select2';
+        $args['label_class'] = array('control-label');
+        $args['custom_attributes'] = array( 'data-plugin' => 'select2', 'data-allow-clear' => 'true', 'aria-hidden' => 'true',  ); // Add custom data attributes to the form input itself
+    break;
+
+    case 'country' : /* By default WooCommerce will populate a select with the country names - $args defined for this specific input type targets only the country select element */
+        $args['class'][] = 'form-group single-country';
+        $args['label_class'] = array('control-label');
+    break;
+
+    case "state" : /* By default WooCommerce will populate a select with state names - $args defined for this specific input type targets only the country select element */
+        $args['class'][] = 'form-group'; // Add class to the field's html element wrapper
+        $args['input_class'] = array('form-control', 'input-lg'); // add class to the form input itself
+        //$args['custom_attributes']['data-plugin'] = 'select2';
+        $args['label_class'] = array('control-label');
+        $args['custom_attributes'] = array( 'data-plugin' => 'select2', 'data-allow-clear' => 'true', 'aria-hidden' => 'true',  );
+    break;
+
+
+    case "password" :
+    case "text" :
+    case "email" :
+    case "tel" :
+    case "number" :
+        $args['class'][] = 'form-group';
+        //$args['input_class'][] = 'form-control input-lg'; // will return an array of classes, the same as bellow
+        $args['input_class'] = array('form-control', 'input-lg');
+        $args['label_class'] = array('control-label');
+    break;
+
+    case 'textarea' :
+        $args['input_class'] = array('form-control', 'input-lg');
+        $args['label_class'] = array('control-label');
+    break;
+
+    case 'checkbox' :
+    break;
+
+    case 'radio' :
+    break;
+
+    default :
+        $args['class'][] = 'form-group';
+        $args['input_class'] = array('form-control', 'input-lg');
+        $args['label_class'] = array('control-label');
+    break;
+    }
+
+    return $args;
+}
+
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'iconic_cart_count_fragments', 10, 1 );
+
+function iconic_cart_count_fragments( $fragments ) {
+
+    $fragments['#itemCount'] = '<span id="itemCount" style="display: block;" >' . WC()->cart->get_cart_contents_count() . '</span>';
+
+    return $fragments;
+}
+
+add_filter("woocommerce_checkout_fields", "order_fields");
+
+function order_fields($fields) {
+
+    $order = array(
+		"billing_email",
+		"billing_civility",
+        "billing_first_name",
+        "billing_last_name",
+		"billing_phone",
+        "billing_address_1",
+        "billing_address_2",
+        "billing_postcode",
+        "billing_country",
+    );
+    foreach($order as $field)
+    {
+        $ordered_fields[$field] = $fields["billing"][$field];
+    }
+
+    $fields["billing"] = $ordered_fields;
+    return $fields;
+}
+
+
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+// Our hooked in function - $fields is passed via the filter!
+function custom_override_checkout_fields( $fields ) {
+     $fields['billing']['billing_civility'] = array(
+        'label'     => __('Civility', 'woocommerce'),
+		'type'      => 'select',
+		'options'   =>	array(
+		  'mrs' => 'Mrs',
+		  'mr'  => 'Mr'
+		),
+	    'placeholder'   => _x('Civility', 'placeholder', 'woocommerce'),
+	    'required'  => true,
+	    'class'     => array('form-row-wide'),
+	    'clear'     => true
+     );
+
+     return $fields;
+}
+
+/**
+ * Display field value on the order edit page
+ */
+
+add_action( 'woocommerce_admin_order_data_after_billing_email', 'my_custom_checkout_field_display_admin_order_meta', 10, 1 );
+
+function my_custom_checkout_field_display_admin_order_meta($order){
+    echo '<p><strong>'.__('Civility').':</strong> ' . get_post_meta( $order->get_id(), '_billing_civility', true ) . '</p>';
 }

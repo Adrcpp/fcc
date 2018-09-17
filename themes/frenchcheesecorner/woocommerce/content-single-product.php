@@ -27,6 +27,7 @@ if ( post_password_required() ) {
 	return;
 }
 
+
 global $product;
 
 ?>
@@ -46,10 +47,9 @@ global $product;
 	}
 
 	 // $nex_post get_next_post('%link', '<', false, ' ', 'product_cat');
-	 $nex_post =  get_previous_post(false, '', 'product_cat');
+	 $nex_post  =  get_previous_post(false, '', 'product_cat');
 	 $prev_post = get_next_post(false, '', 'product_cat');
 
-	//var_dump($nex_post, $prev_post);
 	?>
 
 	<div class="bg-black ">
@@ -61,8 +61,8 @@ global $product;
 				<h3 class="sub-title"> <?php echo $term->name; ?></h3>
 			</div>
 		</div>
-		<div class='next-fromage'> <a class="sub-title next-fromage-link" href="<?php echo $nex_post->guid; ?>" > <?php echo  $nex_post->post_title; ?>  > </a> </diV>
-		<div class='prev-fromage'> <a class="sub-title next-fromage-link" href="<?php echo $prev_post->guid; ?>" > < <?php echo $prev_post->post_title; ?></a> </diV>
+		<div class='next-fromage'><?php if ($nex_post->guid): ?> <a class="sub-title next-fromage-link" href="<?php echo $nex_post->guid; ?>" > <?php echo  $nex_post->post_title; ?>  > </a> <?php endif ?></diV>
+		<div class='prev-fromage'><?php if ($prev_post->guid): ?> <a class="sub-title next-fromage-link" href="<?php echo $prev_post->guid; ?>" > < <?php echo $prev_post->post_title; ?></a> <?php endif ?></diV>
 	</div>
 		<?php
 
@@ -87,17 +87,17 @@ global $product;
 			<!-- Gallery + short descr -->
 			<div class="row gallery-product-info">
 
-				<div class="col-sm-4" id="product-gallery">
+				<div class="col-sm-6" id="product-gallery">
 				<?php
 					global $product;
 
 					$attachment_ids = $product->get_gallery_attachment_ids();
 
-					echo '<div class="container slick-container">';
+					echo '<div class="slick-product">';
 					echo '<div class="slick">';
 					foreach ($attachment_ids as $id) {
 						echo '<div>';
-						echo '<img style="max-width: 200px;margin: auto;" src="' .  wp_get_attachment_url( $id ) . '">';
+						echo '<img style="max-width: 300px;margin: auto;" src="' .  wp_get_attachment_url( $id ) . '">';
 						echo '</div>';
 					}
 
@@ -135,7 +135,6 @@ global $product;
 								]
 							});
 
-
 					});
 
 					</script>';
@@ -143,18 +142,19 @@ global $product;
 				?>
 				</div>
 
-				<div class="col-sm-6 text-center">
+				<div class="col-sm-6">
 
 					<div class="short-descr-warpper">
 						<?php echo $details['shortdescr']; ?>
 					</div>
 
-					<div class="product-q"> <a class="show-more" href="#">Shop now</a>
-					<input type="text" class="quantity-product input-q" name="quantity" value="1" class="qty" style="margin-bottom: 0px !important" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
-					<div class="plus-minus">
-					<input type="button" value="+" class="qtyplus stack input-q"  field="quantity" style="font-weight: bold;" />
-					<input type="button" value="-" class="qtyminus stack input-q" field="quantity" style="font-weight: bold;" />
-					</div></div>';
+					<!-- <div class="product-q"> <a class="show-more pdt-shop-btn" href="<?php echo get_site_url() .  "/?add-to-cart="  . $product->get_id() . "&quantity=1" ?>">Shop now</a>
+						<input type="text" class="quantity-product input-q" name="quantity" value="1" class="qty" style="margin-bottom: 0px !important" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+						<div class="plus-minus">
+							<input type="button" value="+" class="qtyplus stack input-q"  field="quantity" style="font-weight: bold;" />
+							<input type="button" value="-" class="qtyminus stack input-q" field="quantity" style="font-weight: bold;" />
+						</div>
+					</div> -->
 
 				</div>
 
@@ -162,7 +162,7 @@ global $product;
 
 
 			<!-- TAB -->
-			<ul class="nav-product-info nav nav-tabs nav-fill">
+			<ul class="nav-product-info nav nav-tabs nav-fill nav-fill">
 				<li class="nav-item ">
 					<a class="nav-link active product-info-tab first-tab" data-toggle="tab" href="#description-panel">Description</a>
 				</li>
@@ -183,15 +183,22 @@ global $product;
 				<div class="tab-pane container active" id="description-panel">
 					<div class="row">
 
-						<div class="col-sm">
+						<div class="col-sm align-center">
 
 							<div class="wrap">
 
-								<div>
+								<div class="zoom-photo">
 									<?php
 
 									if (!empty($details['image-product'])) {
 										echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:95%;display:block;" />';
+										?>
+										<script>
+										jQuery(document).ready(function( $ ) {
+											$(".zoom-photo").zoom();
+										});
+										</script>
+										<?php
 									}  else {
 										echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
 									}
@@ -214,29 +221,233 @@ global $product;
 
 				<div class="tab-pane container fade" id="ingredients-panel">
 					<div class="row">
-						<div class="col-sm">
+						<div class="col-sm align-center">
+
+							<div class="wrap">
+
+								<div class="zoom-photo">
+									<?php
+
+									if (!empty($details['image-product'])) {
+										echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:95%;display:block;" />';
+										?>
+										<script>
+										jQuery(document).ready(function( $ ) {
+											$(".zoom-photo").zoom();
+										});
+										</script>
+										<?php
+									}  else {
+										echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
+									}
+									?>
+
+								</div>
+							</div>
 						</div>
+
 						<div class="col-sm description-tab">
 							<?php echo $details['ingredients']; ?>
 						</div>
-						<div class="col-sm">
-						</div>
+
 					</div>
 				</div>
 
 				<div class="tab-pane container fade" id="nutrition-panel">
 					<div class="row">
-						<div class="col-sm">
+						<div class="col-sm align-center">
+
+							<div class="wrap">
+
+								<div class="zoom-photo">
+									<?php
+
+									if (!empty($details['image-product'])) {
+										echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:95%;display:block;" />';
+										?>
+										<script>
+										jQuery(document).ready(function( $ ) {
+											$(".zoom-photo").zoom();
+										});
+										</script>
+										<?php
+									}  else {
+										echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
+									}
+									?>
+
+								</div>
+							</div>
 						</div>
+
 						<div class="col-sm description-tab">
-							<?php echo $details['nutrition']; ?>
+
+							<div class="wpnf-label " id="wpnf-500"><div class="heading">
+								Nutrition Facts
+							</div>
+
+							<hr class="hr-small">
+
+							<div class="wpnf_servings item_row wpnf_cf">
+								 <?php
+								 if ($details['nutritions']['serving'] == "Varied")
+								 	echo $details['nutritions']['serving'];
+								 else
+								  	echo "About" . $details['nutritions']['serving'];
+								 ?> Servings Per Container
+							</div>
+
+							<strong> Serving size</strong> <span class="f-right">  1oz. (30g) </span>
+							<hr class="hr-big">
+							<div class="item_row wpnf_cf no-border">
+								<span class="f-left">Amount per serving</span><br>
+								<span class="f-left">
+									<strong class="wpnf_item_title calories">Calories</strong>
+								</span>
+								<span class="f-right calories-tot"><?php echo $details['nutritions']['cal']; ?></span>
+							</div>
+
+							<hr class="hr-big">
+
+							<div class="amount-per small item_row wpnf_cf">
+								<span class="f-left">Amount</span>
+								<span class="f-right">% Daily Value*</span>
+							</div>
+
+							<div class="item_row wpnf_cf">
+								<span class="f-left">
+									<strong class="wpnf_item_title">Total Fat </strong>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['tot_fats']['val']; ?>g</span>
+								</span> <span class="f-right"><strong><?php echo $details['nutritions']['tot_fats']['perc']; ?>%</strong></span>
+							</div>
+							<div class="indent item_row wpnf_cf">
+								<span class="f-left">
+									<span class="wpnf_item_title">Saturated Fat </span>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['sat_fats']['val']; ?>g</span>
+								</span> <span class="f-right"><strong><?php echo $details['nutritions']['sat_fats']['perc']; ?>%</strong></span>
+							</div>
+							<div class="indent item_row wpnf_cf">
+								<span>
+									<span class="wpnf_item_title">Trans Fat </span>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['trans_fats']; ?>g</span>
+								</span>
+							</div>
+							<div class="item_row wpnf_cf">
+								<span class="f-left">
+									<strong class="wpnf_item_title">Cholesterol </strong>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['chol_fats']['val']; ?>mg</span>
+								</span> <span class="f-right"><strong><?php echo $details['nutritions']['chol_fats']['perc']; ?>%</strong></span>
+							</div>
+
+							<div class="item_row wpnf_cf">
+								<span class="f-left">
+									<strong class="wpnf_item_title">Sodium </strong>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['sodium']['val']; ?>mg</span>
+								</span> <span class="f-right"><strong><?php echo $details['nutritions']['sodium']['perc']; ?>%</strong></span>
+							</div>
+							<div class="item_row wpnf_cf">
+								<span class="f-left">
+									<strong class="wpnf_item_title">Total Carbohydrate </strong>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['t_carb']['val']; ?>g</span>
+								</span>
+								<span class="f-right"><strong><?php echo $details['nutritions']['t_carb']['perc']; ?>%</strong></span>
+							</div>
+								<div class="indent item_row wpnf_cf">
+									<span>
+										<span class="wpnf_item_title small-items">Dietary Fiber</span>
+										<span class="wpnf_item_tot"><?php echo $details['nutritions']['fiber']['val']; ?>g</span>
+									</span>
+									<span class="f-right"><strong><?php echo $details['nutritions']['fiber']['perc']; ?>%</strong></span>
+								</div>
+
+								<div class="indent item_row wpnf_cf">
+									<span>
+										<span class="wpnf_item_title small-items">Total Sugars </span>
+										<span class="wpnf_item_tot"><?php echo $details['nutritions']['t_sugar']['val']; ?>g</span>
+									</span>
+								</div>
+
+								<div class="indent-double item_row wpnf_cf">
+									<span>
+										<span class="wpnf_item_title small-items">Includes</span>
+										<span class="wpnf_item_tot small-items"><?php echo $details['nutritions']['added']; ?>g Added Sugars</span>
+									</span>
+									<span class="f-right"><strong><?php echo $details['nutritions']['t_sugar']['perc']; ?>%</strong></span>
+								</div>
+
+
+							<div class="item_row wpnf_cf">
+								<span class="f-left">
+									<strong class="wpnf_item_title">Protein </strong>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['protein']; ?>g</span>
+								</span>
+							</div>
+
+							<hr class="hr-big">
+							<div class="item_row wpnf_cf no-border">
+								<span class="f-left">
+									<span class="wpnf_item_title small-items">Vitamin D </span>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['vit_d']['val']; ?>mg</span>
+								</span> <span class="f-right"><?php echo $details['nutritions']['vit_d']['perc']; ?>%</span>
+							</div>
+							<div class="item_row wpnf_cf">
+								<span class="f-left">
+									<span class="wpnf_item_title small-items">Calcium </span>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['calcium']['val']; ?>mg</span>
+								</span> <span class="f-right"><?php echo $details['nutritions']['calcium']['perc']; ?>%</span>
+							</div>
+
+							<div class="item_row wpnf_cf">
+								<span class="f-left">
+									<span class="wpnf_item_title small-items">Iron </span>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['iron']['val']; ?>mg</span>
+								</span> <span class="f-right"><?php echo $details['nutritions']['iron']['perc']; ?>%</span>
+							</div>
+
+							<div class="item_row wpnf_cf">
+								<span class="f-left">
+									<span class="wpnf_item_title small-items">Potassium </span>
+									<span class="wpnf_item_tot"><?php echo $details['nutritions']['potassium']['val']; ?>mg</span>
+								</span> <span class="f-right"><?php echo $details['nutritions']['potassium']['perc']; ?>%</span>
+							</div>
+						<hr>
+
+						<div class="small wpnf_cf"> *The Daily Values tells you how much a nutrient in a serving of food contributes to a daily diet.</div></div>
 						</div>
-						<div class="col-sm">
-						</div>
+
 					</div>
 				</div>
 
 				<div class="tab-pane container fade" id="reviews-panel">
+					<div class="row">
+						<div class="col-sm align-center">
+
+							<div class="wrap">
+
+								<div class="zoom-photo">
+									<?php
+
+									if (!empty($details['image-product'])) {
+										echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:95%;display:block;" />';
+										?>
+										<script>
+										jQuery(document).ready(function( $ ) {
+											$(".zoom-photo").zoom();
+										});
+										</script>
+										<?php
+									}  else {
+										echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
+									}
+									?>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm text-center align-center" >
+							<?php comments_template(); ?>
+						</div>
+					</div>
 				</div>
 
 
@@ -261,10 +472,10 @@ global $product;
 		  		  $product = wc_get_product( $id );
 
 				  echo '<div class="col-sm-4 text-center">';
-				  echo $product->get_image();
+				  echo '<a  href="' . $product->get_permalink() .'">' . $product->get_image(). '</a>';
 				  echo '<div class="text-center">';
-				  echo '<h4 class="title">' .$product->get_name() . '</h4>';
-				  echo '<a class="show-more" href="' . $product->get_permalink() .'">Shop now</a>';
+				  echo '<a  href="' . $product->get_permalink() .'"><h4 class="title">' .$product->get_name() . '</h4></a>';
+				  echo '<a class="show-more" href="' . $product->get_permalink() .'">Discover</a>';
 				  echo '</div>';
 				  echo '</div>';
 		  	  }
@@ -279,8 +490,7 @@ global $product;
 	</div> <!-- BG BLACK -->
 </div>
 
-<?php	Widget_Social::render_widget(); ?>
-
+<?php	Widget_Social::render_widget(true); ?>
 
 <script>
 jQuery(function($) {

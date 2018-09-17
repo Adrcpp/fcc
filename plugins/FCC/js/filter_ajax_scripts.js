@@ -51,40 +51,44 @@ jQuery(document).ready(function( $ ) {
     };
 });
 
+/*
+*   Input number for adding product to cart
+*/
 jQuery(document).ready(function($){
-        // This button will increment the value
-        $(document).on("click", '.qtyplus', function(e){
+    // This button will increment the value
+    $(document).on("click", '.qtyplus', function(e) {
 
-            console.log("click");
-            // Stop acting like a button
-            e.preventDefault();
-            // Get the field name
-            fieldName = $(this).attr('field');
-            // Get its current value
-            var input = $(this).parent().parent().children('.input-q');
-            var currentVal = parseInt($(input).val());
-            // If is not undefined
-            if (!isNaN(currentVal)) {
-                // Increment only if value is < 20
-                if (currentVal < 20)
-                {
-                  $(input).val(currentVal + 1);
-                  $('.qtyminus').val('-').removeAttr('style');
-                }
-                else
-                {
-                    $('.qtyplus').val('+').css('color','#aaa');
-                    $('.qtyplus').val('+').css('cursor','not-allowed');
-                }
-            } else {
-                // Otherwise put a 0 there
-                $(input).val(1);
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        var input = $(this).parent().parent().children('.input-q');
+        var currentVal = parseInt($(input).val());
+        // If is not undefined
+        if (!isNaN(currentVal)) {
+            // Increment only if value is < 20
+            if (currentVal < 20)
+            {
+                $(input).val(currentVal + 1);
+                $('.qtyminus').val('-').removeAttr('style');
 
+                changeQuantityButton($(this), currentVal + 1)
             }
-        });
+            else
+            {
+                $('.qtyplus').val('+').css('color','#aaa');
+                $('.qtyplus').val('+').css('cursor','not-allowed');
+            }
+        } else {
+            // Otherwise put a 0 there
+            $(input).val(1);
+            changeQuantityButton($(this), 1)
+        }
+    });
+
     // This button will decrement the value till 0
     $(document).on("click", '.qtyminus', function(e) {
-        console.log("click");
 
         // Stop acting like a button
         e.preventDefault();
@@ -96,12 +100,41 @@ jQuery(document).ready(function($){
         if (!isNaN(currentVal) && currentVal > 1) {
             // Decrement one only if value is > 1
             $(input).val(currentVal - 1);
-             $('.qtyplus').val('+').removeAttr('style');
+            $('.qtyplus').val('+').removeAttr('style');
+
+            changeQuantityButton($(this), currentVal - 1)
+
         } else {
             // Otherwise put a 0 there
             $(input).val(1);
+            changeQuantityButton($(this), 1)
             $('.qtyminus').val('-').css('color','#aaa');
             $('.qtyminus').val('-').css('cursor','not-allowed');
         }
     });
+
+    function changeQuantityButton( $this, $value)
+    {
+        $anchor = $this.parent().prev().prev();
+        $oldhref = $anchor.attr('href');
+        if ($oldhref) {
+            $oldhref = $oldhref.replace(/=([^=]*)$/, '');
+            $oldhref = $oldhref.replace('&quantity', '');
+
+            console.log('anchor test : ' + $oldhref);
+            console.log('attr href = ' + $oldhref + '&quantity=' + $value)
+            $this.parent().prev().prev().attr('href', $oldhref + '&quantity=' + $value)
+        }
+    }
+
+    /* Woocommerce cart - Trigger Ajax call to change total / quantity when product's quantity is changed*/
+    jQuery('div.woocommerce').on('change', 'input.qty', function() {
+		setTimeout(function() { jQuery("[name='update_cart']").trigger("click"); }, 1000);
+    });
+
+    jQuery('div.woocommerce').on('click', 'input.stack.input-q', function() {
+        jQuery('input.qty').trigger("change");
+    });
+
+
 });

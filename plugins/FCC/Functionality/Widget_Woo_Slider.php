@@ -41,11 +41,11 @@ class WP_Widget_Woo_Slider extends WP_Widget {
 		foreach ($products as $key => $value) {
 			$data = get_post_meta($value->get_id(), "fcc_product_info");
 			echo '<div class=" text-center">';
-			echo $value->get_image();
+			echo '<a href="' . $value->get_permalink() .'">'. $value->get_image(). '</a>';
 			echo '<div class="text-center">';
 			echo '<h4 class="title">' .$value->get_name() .'</h4>';
 			echo '<h6 class="sub-title">' . $data[0]["subtitle"] .'</h6>';
-			echo '<a class="show-more" href="' . $value->get_permalink() .'">Shop now</a>';
+			echo '<a class="show-more" href="' . $value->get_permalink() .'">Discover</a>';
 			echo '</div>';
 			echo '</div>';
 
