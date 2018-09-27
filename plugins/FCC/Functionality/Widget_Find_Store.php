@@ -45,16 +45,16 @@ class Widget_Find_Store extends WP_Widget {
 					<div class="textwidget">
 						<div class="col-sm-12 text-center">
 							<a class="social-fcc p-4" href="">
-								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/wholefood.png" width="100">
+								<img class="img-store" src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/wholefood.png" width="100">
 							</a>
 							<a class="social-fcc p-4"  href="">
-								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/walmart.jpg.png" width="150">
+								<img class="img-store" src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/walmart.jpg.png" width="150">
 							</a>
 							<a class="social-fcc p-4" href="">
-								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/target.png" width="160">
+								<img class="img-store" src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/target.png" width="160">
 							</a>
 							<a class="social-fcc p-4" href="">
-								<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/trader-joe.png" width="180">
+								<img class="img-store" src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/trader-joe.png" width="180">
 							</a>
 						</div>
 					</div>
@@ -79,8 +79,8 @@ class Widget_Find_Store extends WP_Widget {
 
 					<div class="col-sm-3"> </div>
 					<div class="col-sm-9">
-						<input class="store-input" type="text" placeholder="City"> </input>
-						<input class="store-input" type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required> </input>
+						<input class="store-input" type="text" name="zip" id="mce-zip" placeholder="Zipcode"> </input>
+						<input class="store-input" type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email address" required> </input>
 						<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_566471b2380f7022f8b20cbcf_c35fa349d1" tabindex="-1" value=""></div>
 					    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class=" subscribe">
 
@@ -89,7 +89,7 @@ class Widget_Find_Store extends WP_Widget {
 				<div class="row"><!-- START CELL-->
 					<div class="col-sm-3"> </div>
 					<div class="col-sm-5">
-						<input class="store-input" id="checkbox-nlt" name="checkbox" type="checkbox"> </input>
+						<input class="store-input" id="checkbox-nlt" name="checkbox" type="checkbox" checked> </input>
 						<label>Subscribe to our Newsletter</label>
 					</div>
 					<div class="col-sm-4"> </div>
@@ -123,7 +123,9 @@ function ajax_newsletter()
 
 	$url = $_POST['url'];
 	$email = $_POST['EMAIL'];
-	$myvars = 'EMAIL=' . urlencode($email) . "&b_566471b2380f7022f8b20cbcf_c35fa349d1=&subscribe=Subscribe";
+	$zip = $_POST['ZIP'];
+	$myvars = 'EMAIL=' . urlencode($email) . "&MERGE4=" . urlencode($zip) . "&b_566471b2380f7022f8b20cbcf_c35fa349d1=&subscribe=Subscribe";
+	// ."&MMERGE6%5Baddr1%5D=.&MMERGE6%5Baddr2%5D=.&MMERGE6%5Bstate%5D=.&MMERGE6%5Bzip%5D=.&MMERGE6%5Bcountry%5D=USA".
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url );

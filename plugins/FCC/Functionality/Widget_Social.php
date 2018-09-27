@@ -52,7 +52,7 @@ class Widget_Social extends WP_Widget {
 						<a class="social-fcc" target="_blank"  href="https://www.instagram.com/frenchcheeseboard/?hl=en">
 							<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/insta-1.png" width="50">
 						</a>
-						<a class="social-fcc" target="_blank"  href="https://twitter.com/frenchboard?lang=en">
+						<a class="social-fcc" target="_blank"  href="https://twitter.com/FRCheeseCorner">
 							<img src="'.  get_site_url() . '/wp-content/uploads/2018/07/twitter-2.png" width="45">
 						</a>
 	                </div>

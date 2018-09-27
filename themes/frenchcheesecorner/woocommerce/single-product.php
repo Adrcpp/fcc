@@ -29,7 +29,7 @@ get_header( 'shop' ); ?>
 		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 		 * @hooked woocommerce_breadcrumb - 20
 		 */
-		
+
 	?>
 
 		<?php while ( have_posts() ) : the_post(); ?>

@@ -65,3 +65,8 @@ li.image {
 .product-tab {
     padding-top: 50px;
 }
+
+li.image {
+    width: 200px !important;
+    display: inline-block;
+}

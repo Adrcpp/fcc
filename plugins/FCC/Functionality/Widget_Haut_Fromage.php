@@ -110,7 +110,7 @@ class Widget_Haut_Fromage extends WP_Widget {
 				  <p class="text-discover">
 					  <?php echo $content; ?>
 				  </p>
-				  <a class="haute-fr-btn" href="<?php echo $gallery[0]->get_permalink(); ?>"> <div class="go-shop"> Shop </div></a>
+				  <a class="haute-fr-btn" href="<?php echo $gallery[0]->get_permalink(); ?>"> <div class="go-shop"> Discover </div></a>
 			  </div>
 			  <?php self::print_haut_fromage(); ?>
 		  </div>

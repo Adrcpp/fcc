@@ -1350,9 +1350,11 @@ div#select-filter {
 select#texture, select#milk {
     background-color: #ffffff87;
 }
-
+#texture, #milk {
+	    padding: 5px;
+}
 .filter-hero.col-sm-12.product-filter.parallax-window {
-    background-color: #0000002b;
+    background-color: #0000006e;
 }
 
 .show-more {
@@ -1391,7 +1393,10 @@ select#texture, select#milk {
 }
 
 .sub-title {
-
+	width: fit-content;
+    margin: auto;
+    filter: drop-shadow(0 0 3px #333);
+	padding-bottom: 11px;
 }
 
 nav.woocommerce-breadcrumb {
@@ -1626,7 +1631,7 @@ label.label-contact {
 .next-fromage {
     line-height: 0;
     position: absolute;
-    top: 40%;
+    top: 50%;
     display: block;
     height: 20px;
     padding: 0;
@@ -1641,12 +1646,13 @@ label.label-contact {
 	right: 80px;
     font-size: 57px;
 	color: white;
+	z-index: 20;
 }
 
 .prev-fromage {
     line-height: 0;
     position: absolute;
-    top: 40%;
+    top: 50%;
     display: block;
     height: 20px;
     padding: 0;
@@ -1660,6 +1666,8 @@ label.label-contact {
     background: transparent;
     font-size: 57px;
 	color: white;
+	left: 80px;
+	z-index: 20;
 }
 
 .next-fromage-link {
@@ -1669,6 +1677,9 @@ label.label-contact {
 
 .hero-title {
 	font-size: 4rem;
+	width: fit-content;
+	margin: auto;
+	filter: drop-shadow(0 0 3px #333)
 }
 
 a.nav-link {
@@ -2230,3 +2241,15 @@ h3#ship-to-different-address {
 	cursor: pointer !important;
 	margin-left: 20px;
 }
+
+.img-store {
+	padding-bottom: 10px;
+}
+
+
+/*.slick-next:before {
+    content:"\u2192" !important;
+}
+.slick-prev:before {
+    content:"\u2190" !important;
+}*/

@@ -75,10 +75,18 @@ class FCC_Plugin {
 
     public function fcc_scripts()
     {
-        wp_register_script('filter_ajax_scripts', plugins_url( '/js/newsletter.js', __FILE__ ));
+
         wp_register_script('filter_ajax_scripts', plugins_url( '/js/filter_ajax_scripts.js', __FILE__ ));
         wp_localize_script('filter_ajax_scripts', 'WPURLS', array( 'siteurl' => admin_url( 'admin-ajax.php' ) ));
         wp_enqueue_script( 'filter_ajax_scripts' );
+
+        wp_register_script('newsletter_ajax_scripts', plugins_url( '/js/newsletter.js', __FILE__ ));
+        wp_localize_script('newsletter_ajax_scripts', 'WPURLS', array( 'siteurl' => admin_url( 'admin-ajax.php' ) ));
+        wp_enqueue_script( 'newsletter_ajax_scripts' );
+
+        wp_register_script('contact_ajax_scripts', plugins_url( '/js/contact.js', __FILE__ ));
+        wp_localize_script('contact_ajax_scripts', 'WPURLS', array( 'siteurl' => admin_url( 'admin-ajax.php' ) ));
+        wp_enqueue_script( 'contact_ajax_scripts' );
 
         wp_enqueue_script( 'jquery-zoom', plugins_url( '/js/jquery.zoom.min.js', __FILE__ ), array(), '1.7', true );
     }

@@ -27,15 +27,6 @@ class Widget_Product_Filter extends \WP_Widget {
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance['title'] );
 
-		// before and after widget arguments are defined by themes
-		// echo $args['before_widget'];
-		// if ( ! empty( $title ) )
-		// echo $args['before_title'] . $title . $args['after_title'];
-
-		// This is where you run the code and display the output
-		// echo __( 'Hello, World!', 'wpb_widget_domain' );
-		// echo $args['after_widget'];
-
 		$orderby = 'name';
 		$order = 'asc';
 		$hide_empty = false ;

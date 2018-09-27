@@ -23,9 +23,42 @@ function render( $post ) {
 	?>
 
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="col-sm-12 ">
 			<h1> Subtitle </h1>
 			<input id="subtitle" name="subtitle" type="text" value="<?php echo $details["subtitle"];?>"/>
+		</div>
+
+
+		<div class="col-sm-12 text-center">
+			<h1>Set the Hero Image</h1>
+			 <div class="postbox">
+
+				  <?php
+					  //var_dump($details);
+					  if (!empty($details['hero-product'])) {
+						  echo '<img class="true_pre_image_hero" id="img" src="' . $details['hero-product'] . '" style="max-width:600px;display:block;margin:auto;" />';
+					  }  else {
+						  echo '<img class="true_pre_image_hero" id="img" src="" style="max-width:600px;display:block;margin:auto;" />';
+					  }
+
+				  ?>
+				  <p id="action-image-hero" class='btn btn-primary'> Choose an image </p>
+
+				  <p class="description_hero">
+				  <?php
+					  $html = "";
+					  $value = "";
+					  if ($details['hero-product']  == '') {
+						  $html .= __( 'You have no file attached to this product.', 'umb' );
+					  } else {
+						  $value = $details['hero-product'];
+					  } // end if
+					  echo $html;
+				  ?>
+				  </p><!-- /.description -->
+				  <input type="hidden" id="hero-product" name="hero-product" value="<?php echo $value; ?>">
+
+			</div>
 		</div>
 
 		<div class="col-sm" id="product-gallery">
@@ -72,34 +105,34 @@ function render( $post ) {
 
 			  <div class="col-sm text-center">
 				  <h1>Set image</h1>
-				   <div class="postbox">
+				  <div class="postbox">
 
-							<?php
-								// var_dump($details);
-								if (!empty($details['image-product'])) {
-									echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:250px;display:block;" />';
-								}  else {
-									echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
-								}
+					  <?php
+					  // var_dump($details);
+					  if (!empty($details['image-product'])) {
+						  echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:250px;display:block;margin:auto;" />';
+					  }  else {
+						  echo '<img class="true_pre_image" id="img" src="" style="max-width:250px;display:block;margin:auto;" />';
+					  }
 
-							?>
-							<p id="action-image" class='btn btn-primary'> Choose an image </p>
+					  ?>
+					  <p id="action-image" class='btn btn-primary'> Choose an image </p>
 
-							<p class="description">
-							<?php
-								$html = "";
-								$value = "";
-								if ($details['image-product']  == '') {
-									$html .= __( 'You have no file attached to this product.', 'umb' );
-								} else {
-									$value = $details['image-product'];
-								} // end if
-								echo $html;
-							?>
-							</p><!-- /.description -->
-							<input type="hidden" id="image-product" name="image-product" value="<?php echo $value; ?>">
+					  <p class="description">
+						  <?php
+						  $html = "";
+						  $value = "";
+						  if ($details['image-product']  == '') {
+							  $html .= __( 'You have no file attached to this product.', 'umb' );
+						  } else {
+							  $value = $details['image-product'];
+						  } // end if
+						  echo $html;
+						  ?>
+					  </p><!-- /.description -->
+					  <input type="hidden" id="image-product" name="image-product" value="<?php echo $value; ?>">
 
-		          </div>
+				  </div>
 			  </div>
 
 			  <div class="col-sm" >
@@ -271,15 +304,23 @@ function render( $post ) {
 
 				  </table>
 
-
 			  </div>
 			</div>
+
+
 	  </div>
 
 	  <style>.product-nutrition {width:140px;}</style>
 	  <div class="tab-pane container fade" id="reviews-panel">
+	  </div>
 
 	  </div>
+
+	  <div class="col-sm-6" >
+		  <h1>Pairing video's link</h1>
+		  <div class="">
+			  <input style="width: 250px;" type="text" name="pairing_video" value="<?php echo $details["pairing_video"];?>">
+		  </div>
 	  </div>
 	<?php
 }
@@ -299,6 +340,9 @@ function fcc_save_metabox( $post_id, $post ) {
 
 	$sanitized = fcc_product_info_defaults();
 
+	if ( isset ( $_POST['hero-product'] ) )
+		$sanitized['hero-product'] = wp_filter_post_kses($_POST['hero-product']);
+
 	if ( isset ( $_POST['subtitle'] ) )
 		$sanitized['subtitle'] = wp_filter_post_kses($_POST['subtitle']);
 
@@ -317,6 +361,9 @@ function fcc_save_metabox( $post_id, $post ) {
 	if ( isset ( $_POST['nutritions'] ) )
 		$sanitized['nutritions'] = $_POST['nutritions'];
 
+	if ( isset ( $_POST['pairing_video'] ) )
+		$sanitized['pairing_video'] = wp_filter_post_kses( $_POST['pairing_video'] );
+
 	update_post_meta( $post->ID, 'fcc_product_info', $sanitized );
 }
 add_action( 'save_post', 'fcc_save_metabox', 1, 2 );
@@ -325,6 +372,7 @@ add_action( 'save_post', 'fcc_save_metabox', 1, 2 );
 function fcc_product_info_defaults()
 {
 	return array(
+		'hero-product'  => '',
 		'subtitle'		=> '',
 		'shortdescr'  	=> '',
 		'image-product' => '',
@@ -348,6 +396,7 @@ function fcc_product_info_defaults()
 								"potassium" => ["val"=> 0, "perc"=> 0],
 							),
 		'reviews'     	=> '',
+		'pairing_video' => ''
 	);
 }
 

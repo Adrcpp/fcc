@@ -26,13 +26,10 @@ get_header( 'shop' );
  * @hooked woocommerce_breadcrumb - 20
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
-do_action( 'woocommerce_before_main_content' );
 
 ?>
 <header class="woocommerce-products-header">
-	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-	<?php endif; ?>
+
 
 	<?php
 	/**
@@ -45,34 +42,58 @@ do_action( 'woocommerce_before_main_content' );
 	?>
 </header>
 <?php
-if ( woocommerce_product_loop() ) {
+$page_title = $wp_query->post->post_title;
 
-	/**
-	 * Hook: woocommerce_before_shop_loop.
-	 *
-	 * @hooked wc_print_notices - 10
-	 * @hooked woocommerce_result_count - 20
-	 * @hooked woocommerce_catalog_ordering - 30
-	 */
-	do_action( 'woocommerce_before_shop_loop' );
+if ( woocommerce_product_loop() && $page_title == "") {
 
-	woocommerce_product_loop_start();
+
+	echo '<div class="container-fluid bg-black">
+	<div id="cheese-count"></div>
+	<div class="container">
+	<div id="products" class="row">';
 
 	if ( wc_get_loop_prop( 'total' ) ) {
 		while ( have_posts() ) {
+
 			the_post();
 
-			/**
-			 * Hook: woocommerce_shop_loop.
-			 *
-			 * @hooked WC_Structured_Data::generate_product_data() - 10
-			 */
-			do_action( 'woocommerce_shop_loop' );
 
-			wc_get_template_part( 'content', 'product' );
+			$data = get_post_meta(get_the_ID(), "fcc_product_info");
+			$value = wc_get_product( get_the_ID() );
+			//
+			// echo '<div class="col-sm-4 text-center">';
+			// echo $value->get_image();
+			// echo '<div class="text-center">';
+			// echo '<h4 class="title">' .$value->get_name() .'</h4>';
+			// echo '<h6 class="sub-title">' . $data[0]["subtitle"] .'</h6>';
+			// // echo '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() .'">Shop now</a> ' ;
+			//
+			// echo '<div class="product-q"> <a class="show-more" href="' . get_site_url() . "/?add-to-cart=" . $value->get_id() .'&quantity=1">Shop now</a> ' ;
+			//
+			// echo '<input type="text" class="quantity-product input-q" name="quantity" value="1" class="qty" style="margin-bottom: 0px !important" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+			//     <div class="plus-minus">
+			//
+			//         <input type="button" value="+" class="qtyplus stack input-q"  field="quantity" style="font-weight: bold;" />
+			//         <input type="button" value="-" class="qtyminus stack input-q" field="quantity" style="font-weight: bold;" />
+			//     </div>
+			// </div>';
+			// echo '</div>';
+			// echo '</div>';
+
+
+			echo '<div class="col-sm-4 text-center">';
+			echo '<a  href="' . $value->get_permalink() . '">' . $value->get_image() .'</a>';
+			echo '<div class="text-center">';
+			echo '<h4 class="title">' .$value->get_name() .'</h4>';
+			echo '<h6 class="sub-title">' . $data[0]["subtitle"] .'</h6>';
+			// echo '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() .'">Shop now</a> ' ;
+
+			echo '<div class="product-q"> <a class="show-more" href="' . $value->get_permalink() . '">Discover</a> </div>' ;
+			echo '</div>';
+			echo '</div>';
 		}
 	}
-
+	echo '</div></div></div>';
 	woocommerce_product_loop_end();
 
 	/**
@@ -81,11 +102,9 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_pagination - 10
 	 */
 	do_action( 'woocommerce_after_shop_loop' );
-} else {
-	/**
-	 * Hook: woocommerce_no_products_found.
-	 *
-	 * @hooked wc_no_products_found - 10
-	 */
-	do_action( 'woocommerce_no_products_found' );
+
+	Widget_Social::render_widget(true);
 }
+
+
+get_footer( 'shop' );

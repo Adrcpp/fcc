@@ -31,8 +31,6 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
 		$gallery = wc_get_products(["product_cat" => 'haute-fromagerie-gourmet']);
 
 
-		$content = $instance['content'];
-
 		$display_gallery =
 		'<div class="container slick-container">
 		 <div class="slick-gourmet">';
@@ -59,9 +57,9 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
              <div class="col-md-1"></div>
               <div class="col-md-7 col-sm-12">
                   <p class="text-discover">
-                      <?php echo $content; ?>
+                      <?php echo $instance['content_1'];; ?>
                   </p>
-                  <a class="haute-fr-gourmet-btn" href="<?php echo $gallery[0]->get_permalink() ?>"> <div class="go-shop"> Shop </div></a>
+                  <a class="haute-fr-gourmet-btn" href="<?php echo $gallery[0]->get_permalink() ?>"> <div class="go-shop"> Discover </div></a>
               </div>
 			  <div class="col-md-4 col-sm-12 slick-gourmet-2">
 				  <?php  echo $display_gallery; ?>
@@ -70,17 +68,20 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
 			  <?php self::print_haut_fromage(); ?>
 
             <div class="col-md-6 col-sm-12 text-center">
-                <img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/roland.png" />
+                <img style="max-width: 380px;"src="<?php echo get_site_url() ?>/wp-content/uploads/2018/09/Roland-redux.jpg" />
             </div>
             <div class="col-md-6 col-sm-12">
 				<h3 class="bart title-white pb-5"> Roland Barthélémy</h3>
                 <p class="text-discover">
-                    <?php echo $content; ?>
+                    <?php echo $instance['content_2']; ?>
                 </p>
-				<a href="<?php echo '#'; ?>"> <div class="go-shop"> Read More </div></a>
+
+				<p class="text-discover">
+					<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/09/signature.png" />
+				</p>
+				<a target="_blank" href="https://rolandbarthelemy.com/"> <div class="go-shop"> Read More </div></a>
             </div>
 		  </div>
-
 
 	  </div>
 	  <?php
@@ -110,10 +111,12 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
 	{
 	    if ($instance) {
 	        $gallery = $instance['gallery'];
-			$content = $instance['content'];
+			$content1 = $instance['content_1'];
+			$content2 = $instance['content_2'];
 	    } else {
 	        $gallery = [];
-			$content = '';
+			$content1 = '';
+			$content2 = '';
 	    }
 
 	    ?>
@@ -151,9 +154,18 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
 					<a href="#" id="add_images" data-choose="<?php esc_attr_e( 'Add images to product gallery', 'woocommerce' ); ?>" data-update="<?php esc_attr_e( 'Add to gallery', 'woocommerce' ); ?>" data-delete="<?php esc_attr_e( 'Delete image', 'woocommerce' ); ?>" data-text="<?php esc_attr_e( 'Delete', 'woocommerce' ); ?>"><?php _e( 'Add product gallery images', 'woocommerce' ); ?></a>
 				</p>
 			</div>
+
+			<h5>Cheese</h5>
 			<div class="col-sm-12">
 				<p>
-					<?php self::get_editor($content) ?>
+					<?php self::get_editor($content1, 1) ?>
+				</p>
+			</div>
+
+			<h5> Roland Barthelemy</h5>
+			<div class="col-sm-12">
+				<p>
+					<?php self::get_editor($content2, 2) ?>
 				</p>
 			</div>
 		</div>
@@ -224,15 +236,19 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
 			}
 		}
 
-		$rand = (int) $new_instance['the_random_number'];
+		$rand = (int) $new_instance['the_random_number_1'];
 		$editor_content = $new_instance[ 'wp_editor_' . $rand ];
 
-		$instance['content'] = $editor_content;
+		$instance['content_1'] = $editor_content;
 
+		$rand = (int) $new_instance['the_random_number_2'];
+		$editor_content = $new_instance[ 'wp_editor_' . $rand ];
+
+		$instance['content_2'] = $editor_content;
 		return $instance;
 	}
 
-	public function get_editor($content)
+	public function get_editor($content, $number)
 	{
 		$rand    = rand( 0, 999 );
 		$ed_id   = $this->get_field_id( 'wp_editor_' . $rand );
@@ -248,8 +264,8 @@ class Widget_Fromagerie_Gourmet extends WP_Widget {
 
 		printf(
 			'<input type="hidden" id="%s" name="%s" value="%d" />',
-			$this->get_field_id( 'the_random_number' ),
-			$this->get_field_name( 'the_random_number' ),
+			$this->get_field_id( 'the_random_number_'. $number),
+			$this->get_field_name( 'the_random_number_'. $number ),
 			$rand
 		);
 		?>

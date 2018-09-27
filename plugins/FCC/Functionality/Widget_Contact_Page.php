@@ -46,7 +46,7 @@ class Widget_Contact_Page extends WP_Widget {
 								</a>
 							</div>
 							<div class="p-2 col">
-								<a target="blank" href="">
+								<a target="blank" href="https://twitter.com/FRCheeseCorner">
 
 									<img src="<?php echo get_site_url() ?>/wp-content/uploads/2018/07/twitter-1.png">
 									<h5 class="title-social">Tweet with us</h5>
@@ -65,10 +65,13 @@ class Widget_Contact_Page extends WP_Widget {
 			<div class="pt-4"></div>
 			<hr/>
 			<div class="pt-4"></div>
+			<div class="show-msg" style="max-width: 600px;
+    margin: auto;" id="error">
 
+			</div>
 			<div class="container pt-4">
 
-				<form>
+				<form id="contact">
 					<div class="form-contact pt-4">
 						<div class="text-center pb-4">
 							<h4 class="sub-title">Or send us a Message!</h4>
@@ -77,18 +80,18 @@ class Widget_Contact_Page extends WP_Widget {
 							<div class="col-sm-6">
 								<div class="form-group col-md-6">
 									<label class="label-contact" for="name">Name</label>
-									<input class="form-control" name="name" type="text" />
+									<input class="form-control" id="name" name="name" type="text" />
 								</div>
 								<div class="form-group col-md-6">
 									<label class="label-contact" for="email">Email</label>
-									<input class="form-control" name="email" type="text" />
+									<input class="form-control" name="email" id="email" type="text" />
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label class="label-contact" for="message"> Your message</label>
 
-									<textarea class="form-control" name="message" d="exampleFormControlTextarea1" rows="10"></textarea>
+									<textarea class="form-control" name="message" id="message" d="exampleFormControlTextarea1" rows="10"></textarea>
 								</div>
 							</div>
 						</div>
@@ -98,33 +101,6 @@ class Widget_Contact_Page extends WP_Widget {
 
 			</div>
 		</div> <!-- Contact Page -->
-
-
-
-		<!-- Begin MailChimp Signup Form -->
-		<!-- <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-		<style type="text/css">
-			#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
-			/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-			   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-		</style>
-		<div id="mc_embed_signup">
-		<form action="https://frenchcheesecorner.us19.list-manage.com/subscribe/post?u=566471b2380f7022f8b20cbcf&amp;id=c35fa349d1" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-		    <div id="mc_embed_signup_scroll">
-			<label for="mce-EMAIL">Subscribe to our mailing list</label>
-			<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required> -->
-		    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-		    <!-- <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_566471b2380f7022f8b20cbcf_c35fa349d1" tabindex="-1" value=""></div>
-		    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-		    </div>
-		</form>
-		</div> -->
-
-		<!--End mc_embed_signup-->
-
-
-
-
 
 
 		<style>
@@ -138,27 +114,49 @@ class Widget_Contact_Page extends WP_Widget {
 	// Widget Backend
 	public function form( $instance )
     {
-		if ( isset( $instance[ 'title' ] ) ) {
-			$title = $instance[ 'title' ];
-		}
-		else {
-			$title = __( 'New title', 'wpb_widget_domain' );
-		}
-		// Widget admin form
-		?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-		</p>
-		<?php
+
 	}
 
 	public function update( $new_instance, $old_instance )
     {
-		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		return $instance;
 	}
+}
+
+/*
+*  Add the ajax call in the front end for filtering the products:
+*/
+add_action( 'wp_ajax_send_mail', 'ajax_send_mail' );
+add_action( 'wp_ajax_nopriv_send_mail', 'ajax_send_mail' );
+function ajax_send_mail() {
+
+	$admin_email = get_bloginfo('admin_email');
+
+	if ($_POST["name"] != "" && $_POST["email"] != "" && $_POST["message"] != "")
+	{
+	    $name = $_POST["name"];
+	    $msg = "You receive a message from the contact page: \n";
+	    $msg .= "Name: "   . $name;
+	    $msg .= "E-mail: " . $_POST["email"];
+	    $msg .= "\n\n";
+	    $msg .= "Message: \n";
+	    $msg .= $_POST["message"];
+	    $msg .= "\n\n";
+
+	    $subject = utf8_decode("French Cheese Corner contact");
+	    //$headers = array('Content-Type: text/html; charset=UTF-8', utf8_decode("From: " . $name . "&lt;". $_POST["email"]));
+		$headers = 'From: ' . $admin_email . '\r\n' .
+		'Reply-To: ' .$admin_email .' \r\n' .
+    	'X-Mailer: PHP/' . phpversion();
+
+	    header( "Content-Type: application/json" );
+	    //if ( wp_mail($admin_email, $subject, utf8_decode($msg), $headers) )
+	    if ( mail($_POST["email"], $subject, utf8_decode($msg), $headers) )
+	   	 echo json_encode(["result" =>"success" , "msg" => "Your message has been sent! Thank you!"]);
+	}
+
+	echo json_encode(["result" => "error", "msg" => "An error occured ..."]);
+    wp_die();
 }
 
 add_action( 'widgets_init',  function () {

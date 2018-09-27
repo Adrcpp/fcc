@@ -19,7 +19,8 @@
         {
             action: "newsletter",
             url: 'https://frenchcheesecorner.us19.list-manage.com/subscribe/post-json?u=566471b2380f7022f8b20cbcf&id=c35fa349d1',
-            EMAIL: $('#mce-EMAIL').val()
+            EMAIL: $('#mce-EMAIL').val(),
+            ZIP : $('#mce-zip').val()
         };
 
         var test = $.ajax({

@@ -438,3 +438,19 @@ add_action( 'woocommerce_admin_order_data_after_billing_email', 'my_custom_check
 function my_custom_checkout_field_display_admin_order_meta($order){
     echo '<p><strong>'.__('Civility').':</strong> ' . get_post_meta( $order->get_id(), '_billing_civility', true ) . '</p>';
 }
+
+//
+// function js_async_attr($tag){
+//
+// # Do not add defer or async attribute to these scripts
+// $scripts_to_exclude = array('jquery-3.3.1.min.js', 'script2.js', 'script3.js');
+//
+// foreach($scripts_to_exclude as $exclude_script){
+//  if(true == strpos($tag, $exclude_script ) )
+//  return $tag;
+// }
+//
+// # Defer or async all remaining scripts not excluded above
+// return str_replace( ' src', ' defer="defer" src', $tag );
+// }
+// add_filter( 'script_loader_tag', 'js_async_attr', 10 );

@@ -36,7 +36,7 @@ global $product;
 
 	<?php
 	$post_thumbnail_id = $product->get_image_id();
-	$img_src = wp_get_attachment_image_src( $post_thumbnail_id, "full")[0];
+	//$img_src = wp_get_attachment_image_src( $post_thumbnail_id, "full")[0];
 
 	global $product;
 	$terms = get_the_terms( $product->get_id(), 'product_cat' );
@@ -52,9 +52,9 @@ global $product;
 
 	?>
 
-	<div class="bg-black ">
-	<div class="warpper-hero jumbotron vertical-center ">
-		<div class=" hero-image col-sm-12 parallax-window">
+	<div class="parallax-window" data-parallax="scroll" style="height:85vh;">
+
+		<div class=" hero-image col-sm-12 ">
 			<div class="hero-text">
 				<h1 class="hero-title"><?php echo $product->get_name(); ?></h1>
 				<p> <?php $product->get_title(); ?></p>
@@ -63,18 +63,17 @@ global $product;
 		</div>
 		<div class='next-fromage'><?php if ($nex_post->guid): ?> <a class="sub-title next-fromage-link" href="<?php echo $nex_post->guid; ?>" > <?php echo  $nex_post->post_title; ?>  > </a> <?php endif ?></diV>
 		<div class='prev-fromage'><?php if ($prev_post->guid): ?> <a class="sub-title next-fromage-link" href="<?php echo $prev_post->guid; ?>" > < <?php echo $prev_post->post_title; ?></a> <?php endif ?></diV>
-	</div>
-		<?php
+
+			<?php
 
 			$args = array(
 				'delimiter' => '>',
 			);
-		?>
-
-		<?php woocommerce_breadcrumb( $args ); ?>
+			?>
 
 		</div>
 
+		<div class="bg-black"><?php woocommerce_breadcrumb( $args ); ?>	</div>
 		<?php  $details = get_product_infos($product->get_id());  ?>
 
 
@@ -97,7 +96,7 @@ global $product;
 					echo '<div class="slick">';
 					foreach ($attachment_ids as $id) {
 						echo '<div>';
-						echo '<img style="max-width: 300px;margin: auto;" src="' .  wp_get_attachment_url( $id ) . '">';
+						echo '<img class="fromage-descr" src="' .  wp_get_attachment_url( $id ) . '">';
 						echo '</div>';
 					}
 
@@ -193,11 +192,11 @@ global $product;
 									if (!empty($details['image-product'])) {
 										echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:95%;display:block;" />';
 										?>
-										<script>
+										<!-- <script>
 										jQuery(document).ready(function( $ ) {
 											$(".zoom-photo").zoom();
 										});
-										</script>
+										</script> -->
 										<?php
 									}  else {
 										echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
@@ -231,11 +230,11 @@ global $product;
 									if (!empty($details['image-product'])) {
 										echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:95%;display:block;" />';
 										?>
-										<script>
+										<!-- <script>
 										jQuery(document).ready(function( $ ) {
 											$(".zoom-photo").zoom();
 										});
-										</script>
+										</script> -->
 										<?php
 									}  else {
 										echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
@@ -265,11 +264,11 @@ global $product;
 									if (!empty($details['image-product'])) {
 										echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:95%;display:block;" />';
 										?>
-										<script>
+										<!-- <script>
 										jQuery(document).ready(function( $ ) {
 											$(".zoom-photo").zoom();
 										});
-										</script>
+										</script> -->
 										<?php
 									}  else {
 										echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
@@ -430,11 +429,11 @@ global $product;
 									if (!empty($details['image-product'])) {
 										echo '<img class="true_pre_image" id="img" src="' . $details['image-product'] . '" style="max-width:95%;display:block;" />';
 										?>
-										<script>
+										<!-- <script>
 										jQuery(document).ready(function( $ ) {
 											$(".zoom-photo").zoom();
 										});
-										</script>
+										</script> -->
 										<?php
 									}  else {
 										echo '<img class="true_pre_image" id="img" src="" style="max-width:95%;display:block;" />';
@@ -455,6 +454,14 @@ global $product;
 				<div class='next-tab' name='previous' id="next"> > </div>
 
 		  </div>
+
+		  <div class="appetizing">
+
+		  	<h4 class="title-white text-center p-8"> appetizing pairing by roland barthélémy</h4>
+			<iframe width="560" height="315" style="padding-top:25px;" src="<?php $count = null; echo trim (preg_replace('/watch\?v=/', 'embed/', $details['pairing_video'], -1, $count ) );?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+		  </div>
+
 
 
 		  <div class="cross-sell">
@@ -504,25 +511,12 @@ jQuery(function($) {
 
 });
 jQuery(document).ready(function( $ ) {
-	$('.parallax-window').parallax({imageSrc: '<?php echo $img_src ?>', zIndex: 12 });
+	$('.parallax-window').parallax({
+		imageSrc: '<?php echo $details['hero-product'] ?>',
+		zIndex: 12,
+		naturalWidth: 1600,
+	    naturalHeight: 1200,
+
+	});
 });
 </script>
-
-<style>
-
-.hero-image {
-    /* The image used */
-    /*background-image: url("<?php echo $img_src ?>");*/
-
-    /* Set a specific height */
-    height: 50vh;
-	z-index: 12;
-    /* Position and center the image to scale nicely on all screens */
-    /* background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    position: relative; */
-    max-width: 400px;
-	margin:auto;
-}
-</style>
